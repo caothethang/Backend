@@ -12,6 +12,8 @@ public class TreeDTO {
     private Double price;
     private String description;
     private Integer quantity;
+    private Long createdAt;
+    private String imageUri;
     
     @JsonProperty("category_id")
     private Long categoryId;

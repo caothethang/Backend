@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
                     .createdAt(System.currentTimeMillis())
                     .role(RoleUser.CUSTOMER.getCode())
                     .build();
-            userRepository.save(user);
+            User data = userRepository.save(user);
             response.setSuccess();
             response.setStatus(UserStatus.REGISTER_SUCCESS);
         }
@@ -49,10 +49,19 @@ public class UserServiceImpl implements UserService {
         if (Objects.isNull(user)){
             baseResponse.setFailed(UserStatus.LOGIN_FAILED,"Login failed",UserStatus.LOGIN_FAILED);
         }else {
+            baseResponse.setData(user);
             baseResponse.setRc(UserStatus.LOGIN_SUCCESS);
             baseResponse.setRd("Login success");
             return baseResponse;
         }
         return baseResponse;
+    }
+    
+    @Override
+    public BaseResponse getUserById(Long id) {
+        BaseResponse<User> response = new BaseResponse();
+        User user = userRepository.findById(id).get();
+        response.setData(user);
+        return response;
     }
 }

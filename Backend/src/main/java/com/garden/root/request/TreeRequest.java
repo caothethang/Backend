@@ -10,6 +10,7 @@ public class TreeRequest {
     private String description;
     private Double price;
     private Integer quantity;
-    private Integer categoryId;
+    private Long categoryId;
     private String imageUri;
+    private Long userId;
 }

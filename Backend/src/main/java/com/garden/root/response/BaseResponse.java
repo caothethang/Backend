@@ -1,14 +1,13 @@
 package com.garden.root.response;
 
-import com.garden.root.common.UserStatus;
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class BaseResponse {
+public class BaseResponse<T> {
     protected int rc;
     protected String rd;
     protected Integer status;
+    protected T data;
     
     public void setSuccess() {
         this.rc = 0;
