@@ -12,9 +12,16 @@ public class TreeDTO {
     private Double price;
     private String description;
     private Integer quantity;
+    
+    @JsonProperty("created_at")
     private Long createdAt;
+    
+    @JsonProperty("image_uri")
     private String imageUri;
     
     @JsonProperty("category_id")
     private Long categoryId;
+    
+    @JsonProperty("owner_id")
+    private Long ownerId;
 }

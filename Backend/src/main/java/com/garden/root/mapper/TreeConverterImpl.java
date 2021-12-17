@@ -17,6 +17,7 @@ public class TreeConverterImpl implements TreeConverter{
                 .createdAt(tree.getCreatedAt())
                 .imageUri(tree.getImageUri())
                 .categoryId(tree.getCategory().getId())
+                .ownerId(tree.getUser().getId())
                 .build();
         return treeDTO;
     }

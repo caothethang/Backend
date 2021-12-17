@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @SuperBuilder
-public class Cart extends BaseEntity{
+public class OrderList extends BaseEntity{
     
     @Column(name = "user_id")
     private Long userId;
@@ -21,9 +21,21 @@ public class Cart extends BaseEntity{
     @Column(name = "description")
     private String description;
     
+    @Column(name = "tree_id")
     private Long treeId;
     
     private Integer quantity;
     
+    @Column(name = "customer_name")
+    private String customerName;
+    
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    
     private Double price;
+    
+    @Column(name = "owner_id")
+    private Long ownerId;
+    
+    private Integer status;
 }

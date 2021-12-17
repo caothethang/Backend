@@ -1,4 +1,4 @@
-package com.garden.root.services;
+package com.garden.root.services.impl;
 
 import com.garden.root.dto.TreeDTO;
 import com.garden.root.entity.Category;
@@ -8,6 +8,9 @@ import com.garden.root.mapper.TreeConverter;
 import com.garden.root.repositories.TreeRepository;
 import com.garden.root.request.TreeRequest;
 import com.garden.root.response.BaseResponse;
+import com.garden.root.services.CategoryServices;
+import com.garden.root.services.TreeServices;
+import com.garden.root.services.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -84,6 +87,7 @@ public class TreeImpl implements TreeServices {
                 .updatedAt(System.currentTimeMillis())
                 .imageUri(treeRequest.getImageUri())
                 .category(category)
+                .user(tree.getUser())
                 .build();
         treeRepository.save(tree);
         BaseResponse response = new BaseResponse();

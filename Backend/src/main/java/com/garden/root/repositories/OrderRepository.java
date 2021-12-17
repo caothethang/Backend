@@ -1,7 +1,11 @@
 package com.garden.root.repositories;
 
-import com.garden.root.entity.Cart;
+import com.garden.root.entity.OrderList;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OrderRepository extends JpaRepository<Cart,Long> {
+import java.util.List;
+
+public interface OrderRepository extends JpaRepository<OrderList,Long> {
+    
+    List<OrderList> findAllByOwnerId(String ownerId);
 }
