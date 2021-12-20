@@ -1,0 +1,15 @@
+server:
+    port: 8080
+spring:
+    datasource:
+        password: 1234
+        url: jdbc:mysql://localhost:3306/garden
+        username: root
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+cloudinary:
+    cloud-name : ${CLOUD_NAME:thangdevcloud}
+    api-key : ${API_KEY:623649172437435}
+    api-secret : ${API_SECRET:xxWNNj0cDxMCqnI-V71d0ZppPRg}
