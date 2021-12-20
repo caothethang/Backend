@@ -1,0 +1,112 @@
+.aaa{
+    color: #436d4d;
+    text-transform: uppercase;
+    margin-top: 50px;
+    margin-left:  100px;
+
+}
+
+
+.manager{
+    display: flex;
+}
+
+.manager__product{
+    flex: 1;
+}
+.manager__form{
+    flex: 1;
+    display: flex;
+    width: 100%;
+    margin: 60px 50px;
+}
+
+.manager__title{
+    flex: 1;
+}
+
+.manager__title > p{
+    line-height: 27px;
+    margin-bottom: 35px;
+    color: #436d4d;
+    font-weight: 600;
+}
+
+
+.manager__input{
+    flex: 3;
+
+}
+.manager__input > input{
+    line-height: 20px;
+    height: 30px;
+    margin: 10px;
+    width: 100%;
+    border: #436d4d 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.btn-all{
+    margin-left: 100px;
+    display: flex;
+}
+
+.btn__manager{
+    width: 200px;
+    margin: 0 50px;
+    border: 1px solid #ccc;
+}
+.btn__edit{
+    background-color: yellow;
+    color: black;
+}
+
+
+.list__product{
+    flex: 2;
+    margin-left: 150px;
+}
+
+.manager__item__title{
+    display: flex;
+    color: #436d4d;
+    border-bottom: #436d4d 1px solid;
+}
+.manager__item__title > p{
+    text-align: center;
+    font-weight: 600;
+    flex: 1;
+}
+
+.tree__item{
+    display: flex;
+    width: 100%;
+    border-bottom: #436d4d 1px solid;
+    
+}
+
+.tree__item > p{
+    text-align: center;
+    flex: 1;
+}
+
+.tree__item > img{
+    text-align: center;
+    flex: 1;
+    padding: 10px;
+}
+
+.tree__item > button{
+    flex: 1;
+    margin-top: 10px;
+    background-color: red;
+    padding: 0;
+    width:  50px !important;
+    border: none;
+}
+
+.list__trees{
+    overflow:hidden; overflow-y:scroll;
+    height:800px; width:100%;
+}

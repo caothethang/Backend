@@ -1,0 +1,32 @@
+.item{
+    width: calc(25% - 20px);
+    background-color: white;
+    margin: 10px;
+    border-radius: 10px;
+}
+.item__cost{
+    text-align: center;
+    color: red;
+}
+.item__image{
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.item__title{
+    height: 50px;
+}
+
+.btn__bought{
+    width: 40%;
+    height: 40px;
+    font-size: 16px;
+    background-color: red;
+    color: white;
+    font-weight: 550;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+    line-height: 120px;
+}
