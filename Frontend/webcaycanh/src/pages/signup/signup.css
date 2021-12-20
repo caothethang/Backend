@@ -28,21 +28,26 @@ p{
     color: black;
 }
 
-button{
-    width: 40%;
-    height: 40px;
-    font-size: 18px;
-    background-color: #436d4d;
-    color: white;
-    margin-top: 40px;
-    border-radius: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
-    margin-bottom: 20px;
+.btn_signup_form{
+    width: 100%;
+    text-decoration: none;
+    background-color: #ccc;
+    line-height: 30px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px #436d4d solid;
+    color: #436d4d;
+    font-weight: 600;
+    margin-top: 10px;
 }
 
-a{
-    text-decoration: none;
-    color: red;
+.aaa{
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+.aaa > button {
+    width: 130px !important;
+    margin: 0;
 }

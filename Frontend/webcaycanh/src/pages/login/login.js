@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Snackbar } from '@material-ui/core'
 import { Alert } from '@mui/material'
 import axios from 'axios'
+import URL from '../../component/url/url'
 
 
 function Login() {
@@ -31,13 +32,12 @@ function Login() {
         else {
             e.preventDefault()
             setOpen(true)
-
         }
 
     }
 
     useEffect(() => {
-        axios.post('http://192.168.12.106:8080/api/user/login', {
+        axios.post(URL + '/user/login', {
             username,
             password
         })
@@ -45,7 +45,6 @@ function Login() {
                 setRespon(res.data)
                 if(res.data.data){
                     setRole(res.data.data.role)
-                    console.log('role :', role);
                     if(role === 1){
                         setIsAdmin(true)
                     }
@@ -56,7 +55,6 @@ function Login() {
                 
             })
     }, [username, password, role])
-    console.log(isAdmin, role);
     return (
         <div>
             <form className='login__form'>

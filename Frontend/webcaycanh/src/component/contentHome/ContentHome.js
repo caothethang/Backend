@@ -1,7 +1,7 @@
 import './ContentHome.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import URL from '../url/url'
 import Item from '../item/item'
 
 const ContentHome = () => {
@@ -9,7 +9,7 @@ const ContentHome = () => {
     const [newProduct, setNewProduct] = useState([])
 
     useEffect(() => {
-        axios.get('http://192.168.12.106:8080/api/tree')
+        axios.get(URL + '/tree')
             .then(res => setNewProduct(res.data.data))
     }, [])
     return (
@@ -25,7 +25,7 @@ const ContentHome = () => {
                 <h1>SẢN PHẨM MỚI</h1>
                 <div className='content__list_item'>
                     {newProduct.map((item) => {
-                        if (item.id <= 5 && item.id > 1) {
+                        if (item.id <= 4) {
                             return <Item data={item} key={item.id} />
                         }
                     })}
@@ -35,7 +35,7 @@ const ContentHome = () => {
             <h1>BÁN CHẠY NHẤT</h1>
             <div className='content__list_item'>
                 {newProduct.map((item) => {
-                    if (item.id > 5 && item.id <= 9) {
+                    if (item.id > 4 && item.id < 9) {
                         return <Item data={item} key={item.id} />
                     }
                 })}

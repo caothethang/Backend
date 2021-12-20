@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Snackbar } from '@material-ui/core'
 import { Alert } from '@mui/material'
-
+import URL from '../url/url'
 
 const ContentCard = () => {
     let cartProduct = []
@@ -18,14 +18,12 @@ const ContentCard = () => {
     const handleClose = () => {
         setOpen(false)
     }
-    const handleClick = () => {
-        setOpen(true)
-    }
-    
+        
     useEffect(() => {
-        axios.get('http://192.168.12.106:8080/api/tree')
+        axios.get(URL + '/tree')
             .then(res => setCartProducts(res.data.data))
     }, [])
+    
     const id = JSON.parse(localStorage.getItem('product_cart'))
     cartProducts.map(x => {
         if (x.id === id) {
