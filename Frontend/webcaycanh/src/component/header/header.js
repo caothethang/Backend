@@ -10,7 +10,13 @@ const Header = () => {
     var user = []
     if(isLogin){
         user = [...user, JSON.parse(localStorage.getItem('isLogin'))]
+        console.log(user);
     }
+
+    const handelLogout = () => {
+        localStorage.setItem('isLogin', JSON.stringify({}))
+    }
+    console.log(user.name);
     
     return (
         <div className="header">
@@ -20,13 +26,15 @@ const Header = () => {
                 </div>
                 <input type={'search'} className='header__search' placeholder='Tìm kiếm'></input>
                 {
-                    isLogin ? <span className='account'>
-                        <a href='#'>{user[0].name}</a>
-                        <Link to='/login'>Đăng xuất</Link>
-                    </span> : <span className='account'>
+                    user[0].name === undefined ? 
+                    <span className='account'>
                         <Link to='/login'>Đăng nhập</Link>
                         <Link to='/signup'>Đăng ký</Link>
+                    </span> : <span className='account'>
+                        <a href='#'>{user[0].name}</a>
+                        <Link to='/login' onClick={handelLogout}>Đăng xuất</Link>
                     </span>
+                    
                 }  
                     
             </div> 

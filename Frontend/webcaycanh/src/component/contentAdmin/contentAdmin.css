@@ -145,6 +145,15 @@
     margin-left: 20px;
 }
 
-file-upload-button {
-    background-color: #436d4d;
+.tree-image__preview{
+    margin-top: 20px;
+    margin-left: 10px;
+    width: calc(100% + 13px);
+    height: 200px;
+}
+
+.active{
+    background-color: #436d4d !important;
+    color: white !important;
+    border: white 1px solid !important;
 }

@@ -39,12 +39,20 @@ p{
     color: #436d4d;
     font-weight: 600;
     margin-top: 10px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+
 
 .aaa{
     width: 130px;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    margin: 30px auto;
+
 }
 
 .aaa > button {

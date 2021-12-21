@@ -1,0 +1,45 @@
+.orderlist{
+    width: 90%;
+    margin: 50px auto;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+.orderlist__title{
+    width: 90%;
+    display: flex;
+    margin: 10px auto;
+}
+
+.orderlist__title > p{
+    flex: 1;
+    text-align: center;
+    color: #436d4d;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.orderlist__items{
+    padding-bottom: 30px;
+}
+
+.order__item{
+    display: flex;
+    width: 90%;
+    margin: 10px auto;
+    border-top: #436d4d 1px solid;
+
+}
+
+.order__item > p {
+    color: #436d4d;
+    width: 95%;
+    margin: 10px auto;
+
+    text-align: center;
+    flex: 1;
+}
+.order__item > img {
+    padding: 10px;
+    flex: 1;
+    margin-right: 10px;
+}

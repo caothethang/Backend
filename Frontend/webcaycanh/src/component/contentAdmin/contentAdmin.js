@@ -23,6 +23,8 @@ const ContentAdmin = () => {
     const [treeIdDelete, setTreeIdDelete] = useState()
     const [alertErrorContent, setAlertErrorContent] = useState('')
     const [alertSuccesContent, setAlertSuccesContent] = useState('')
+    const [isActive, setIsActive] = useState(false)
+    const [currentActive, setCurrentActive] = useState()
 
 
     const handleCloseError = () => {
@@ -202,6 +204,8 @@ const ContentAdmin = () => {
                             }} />
                             {upLoadNotifiContent && <span>{upLoadNotifiContent}</span>}
                         </div>
+                        {treeImageUrl && <img src={treeImageUrl} className='tree-image__preview'></img>}
+
                     </div>
                 </div>
                 <div className='btn-all'>
@@ -223,7 +227,13 @@ const ContentAdmin = () => {
 
                     {trees.map(tree => {
                         return (
-                            <div className='tree__item' key={tree.id} onClick={() => {
+                            <div className={tree.id === currentActive ? 'tree__item active' : 'tree__item'} key={tree.id} onClick={(e) => {
+                                if(currentActive !== tree.id){
+                                    setCurrentActive(tree.id)
+                                    e.target.parentElement.classList.add('active')
+                                }else {
+                                    setCurrentActive()
+                                }
                                 handleClickTree(tree)
                             }}>
                                 <p>{tree.id}</p>
