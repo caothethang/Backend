@@ -132,6 +132,19 @@
     color: #436d4d;
 }
 
+.input_file_form{
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.input_file_form > span {
+    margin-top: 3px;
+    text-align: right;
+    color: #436d4d;
+    margin-left: 20px;
+}
+
 file-upload-button {
     background-color: #436d4d;
 }

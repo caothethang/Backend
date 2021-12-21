@@ -1,3 +1,3 @@
-const URL = 'http://192.168.12.102:8080/api'
+const URL = 'http://192.168.1.146:8080/api'
 
 export default URL
