@@ -9,11 +9,10 @@
 .nav>ul{
     width: 60%;
     margin: 0 auto;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px 0px;
     text-align: left;
-    padding: 15px;
     background-color: #436d4d;
 }
 
@@ -22,11 +21,21 @@
     border: none;
     margin-left: 15px;
     margin-right: 15px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 500;
+    width: 100%;
+    padding: 10px 25px;
+    margin: 0;
+
 }
 
 .nav>ul>li>a{
     color: #ccc;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: 500;
+    
 }
+
+.nav>ul>li:hover{
+    border-bottom: 5px #ccc solid;
+}
+

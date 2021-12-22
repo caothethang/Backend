@@ -34,12 +34,35 @@
     color: #436d4d;
     width: 95%;
     margin: 10px auto;
-
     text-align: center;
     flex: 1;
 }
 .order__item > img {
     padding: 10px;
+    border-radius: 4px;
     flex: 1;
     margin-right: 10px;
+}
+
+.order__item > div {
+    flex: 1;
+}
+
+.btn__orders {
+    width: 80%;
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.confirm {
+    background-color: #436d4d;
+    color: white;
+    border: white 1px solid;
+}
+
+.reject {
+    background-color: red;
+    color: white;
+    border: white 1px solid;
 }

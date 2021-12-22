@@ -4,7 +4,6 @@ import axios from 'axios'
 import { Snackbar } from '@material-ui/core'
 import { Alert } from '@mui/material'
 import URL from '../url/url'
-import { Link } from 'react-router-dom'
 
 const ContentCard = () => {
     const [cartProduct, setCartProduct] = useState({})
@@ -42,7 +41,7 @@ const ContentCard = () => {
 
     return <>
         <div className='content-cart'>
-            <img className='cart-product__img' src={cartProduct.image_uri}></img>
+            <img className='cart-product__img' src={cartProduct.image_uri} alt='#'></img>
             <div className='cart-product__content'>
                 <h2 className='cart-product__title'>{cartProduct.name}</h2>
                 <p className='cart-product__description' style={{ textAlign: 'justify' }}>{cartProduct.description + cartProduct.description + cartProduct.description}</p>
@@ -61,7 +60,7 @@ const ContentCard = () => {
 
                 </div>
                 <p className='cart-product__cost'>Thành tiền: {cartProduct.price * quanlity} vnđ</p>
-                <button className='cart-product__btn-bought' onClick={(e) => {
+                <button className='cart-product__btn-bought' onClick={() => {
                     if (quanlity === 0) {
                         setAlertError('Vui lòng đặt lại số lượng mua!')
                         setOpen(true)

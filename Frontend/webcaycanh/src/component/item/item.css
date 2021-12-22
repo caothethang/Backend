@@ -1,14 +1,25 @@
 .item{
-    width: calc(25% - 20px);
+    width: calc(25% - 24px);
     background-color: white;
     margin: 10px;
     border-radius: 10px;
+    border: #436d4d 1px solid;
+    overflow: hidden;
 }
+
+.item:hover .item__image{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+
 .item__cost{
     text-align: center;
     color: red;
 }
 .item__image{
+    overflow: hidden;
+    transition: transform .5s ease;
     width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -17,6 +28,7 @@
 
 .item__title{
     height: 50px;
+    color: #436d4d;
 }
 
 .btn__bought{

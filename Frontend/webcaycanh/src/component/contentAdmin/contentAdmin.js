@@ -23,7 +23,6 @@ const ContentAdmin = () => {
     const [treeIdDelete, setTreeIdDelete] = useState()
     const [alertErrorContent, setAlertErrorContent] = useState('')
     const [alertSuccesContent, setAlertSuccesContent] = useState('')
-    const [isActive, setIsActive] = useState(false)
     const [currentActive, setCurrentActive] = useState()
 
 
@@ -237,7 +236,7 @@ const ContentAdmin = () => {
                                 handleClickTree(tree)
                             }}>
                                 <p>{tree.id}</p>
-                                <img src={tree.image_uri}></img>
+                                <img src={tree.image_uri} alt='#'></img>
                                 <p>{tree.name}</p>
                                 <p>{tree.price}</p>
                                 <p>{tree.category_id}</p>
