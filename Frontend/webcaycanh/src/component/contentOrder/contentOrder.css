@@ -25,9 +25,13 @@
 .order__item{
     display: flex;
     width: 90%;
-    margin: 10px auto;
+    margin: 0 auto;
     border-top: #436d4d 1px solid;
+}
 
+.order__item:hover {
+    background-color: white;
+    transition: 0.5s;
 }
 
 .order__item > p {

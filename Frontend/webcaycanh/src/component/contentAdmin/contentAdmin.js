@@ -10,7 +10,7 @@ const ContentAdmin = () => {
     const [tree, setTree] = useState()
     const [treeImage, setTreeImage] = useState()
     const [treeImageUrl, setTreeImageUrl] = useState('')
-    const [treeId, setTreeId] = useState()
+    const [treeId, setTreeId] = useState(1)
     const [treeName, setTreeName] = useState('')
     const [treeDescription, setTreeDescription] = useState('')
     const [treePrice, setTreePrice] = useState(0)
@@ -173,7 +173,7 @@ const ContentAdmin = () => {
                         <p>Ảnh: </p>
                     </div>
                     <div className='manager__input'>
-                        <input type='number' value={treeId} onChange={(e) => {
+                        <input type='number' value={treeId} disabled onChange={(e) => {
                             setTreeId(e.target.value)
                         }}></input><br />
 
