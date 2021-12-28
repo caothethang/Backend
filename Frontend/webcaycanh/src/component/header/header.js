@@ -8,25 +8,38 @@ const Header = () => {
         isLogin = true
     }
     var user = []
+    
+    const handelLogout = () => {
+        localStorage.setItem('isLogin', JSON.stringify({}))
+    }
+
     if(isLogin){
         user = [...user, JSON.parse(localStorage.getItem('isLogin'))]
+        if(user[0].role === 1){
+            handelLogout()
+        }
+        console.log(user);
     }
+
+    console.log(user.name);
     
     return (
         <div className="header">
             <div className='header__content'>
                 <div className='logo__header'>
-                    <img className='logo' src='https://totorogarden.com/wp-content/uploads/2020/04/rsz_logo-01.png'></img>
+                    <img className='logo' src='https://totorogarden.com/wp-content/uploads/2020/04/rsz_logo-01.png' alt='#'></img>
                 </div>
                 <input type={'search'} className='header__search' placeholder='Tìm kiếm'></input>
                 {
-                    isLogin ? <span className='account'>
-                        <a href='#'>{user[0].name}</a>
-                        <Link to='/login'>Đăng xuất</Link>
-                    </span> : <span className='account'>
+                    (user[0].name === undefined) ? 
+                    <span className='account'>
                         <Link to='/login'>Đăng nhập</Link>
                         <Link to='/signup'>Đăng ký</Link>
+                    </span> : <span className='account'>
+                        <a href='/'>{user[0].name}</a>
+                        <Link to='/login' onClick={handelLogout}>Đăng xuất</Link>
                     </span>
+                    
                 }  
                     
             </div> 

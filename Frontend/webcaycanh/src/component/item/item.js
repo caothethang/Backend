@@ -8,9 +8,9 @@ const Item = (props) => {
 
     return(
         <div className='item' key={props.data.id}>
-            <img src={props.data.image_uri} className='item__image'></img>
+            <img src={props.data.image_uri} className='item__image' alt='#'></img>
             <h4 className='item__title'>{props.data.name}</h4>
-            <p className='item__cost'>Giá tiền: {props.data.price}</p>
+            <p className='item__cost'>Giá tiền: {props.data.price} vnđ</p>
             <Link to='/cart' className='btn__bought' onClick={(e) => {handleClickBought(e, props.data.id)}}>Đặt ngay</Link>
         </div>
     )

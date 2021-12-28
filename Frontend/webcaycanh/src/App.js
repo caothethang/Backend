@@ -1,4 +1,3 @@
-import { Switch } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom'
 
 import './App.css';
@@ -8,7 +7,8 @@ import CartPage from './pages/user/cart/cart';
 import HomePage from './pages/user/home/home';
 import ProductPage from './pages/user/product/product';
 import AdminPage from './pages/admin/admin';
-// import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
+import Order from './pages/order/order';
+import ContentAdmin from './component/contentAdmin/contentAdmin';
 
 function App() {
   return (
@@ -20,6 +20,8 @@ function App() {
         <Route path='/product' element={<ProductPage/>}/>
         <Route path='/cart' element={<CartPage/>}/>
         <Route path='/admin' element={<AdminPage/>}/>
+        <Route path='/product-manager' element={<ContentAdmin/>}/>
+        <Route path='/order-manager' element={<Order/>}/>
       </Routes>
     </div>
   );

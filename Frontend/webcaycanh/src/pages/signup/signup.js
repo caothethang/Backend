@@ -12,7 +12,6 @@ function SignUp() {
     const [account, setAccount] = useState({});
     const [repass, setRepass] = useState('')
     const [open, setOpen] = useState(false)
-    const [notifiContent, setNotifiContent] = useState('')
     const [openSucces, setOpenSucces] = useState(false)
     const handleClick = () => {
         setOpen(true)
