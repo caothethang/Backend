@@ -2,9 +2,14 @@ package com.garden.root.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.springframework.lang.Nullable;
 
 @Data
 public class OrderRequest {
+    
+    @JsonProperty("user_id")
+    @Nullable
+    private Long userId;
     
     @JsonProperty("customer_name")
     private String customerName;

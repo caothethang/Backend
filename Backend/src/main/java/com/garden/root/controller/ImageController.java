@@ -3,10 +3,13 @@ package com.garden.root.controller;
 import com.garden.root.services.ImageService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @CrossOrigin
@@ -22,12 +25,15 @@ public class ImageController {
     
     @PostMapping("/upload")
     public ResponseEntity uploadImage(@RequestParam("files")MultipartFile file){
+        System.out.println(file.getOriginalFilename());
         try {
-            String url = (String) imageService.uploadImage(file).get("url");
-            return ResponseEntity.status(HttpStatus.OK).body(url);
-        } catch (IOException e) {
+            CompletableFuture<String> url = imageService.uploadImage(file);
+            String data = url.get();
+            System.out.println(data);
+            return ResponseEntity.status(HttpStatus.OK).body(data);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error");
+        return ResponseEntity.status(HttpStatus.OK).body("Error");
     }
 }

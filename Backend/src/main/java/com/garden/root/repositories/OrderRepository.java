@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface OrderRepository extends JpaRepository<OrderList,Long> {
     
-    List<OrderList> findAllByOwnerId(String ownerId);
+    List<OrderList> findAllByOwnerId(Long ownerId);
 }

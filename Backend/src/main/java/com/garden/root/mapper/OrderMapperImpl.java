@@ -24,10 +24,15 @@ public class OrderMapperImpl implements OrderMapper{
     public OrderDTO convertDto(OrderList order) {
         TreeDTO tree = treeServices.getTreeById(order.getTreeId()).getData();
         return OrderDTO.builder()
+                .orderId(order.getId())
+                .status(order.getStatus())
+                .userId(order.getUserId())
                 .customerName(order.getCustomerName())
                 .quantity(order.getQuantity())
                 .treeDTO(tree)
                 .price(order.getPrice())
+                .phoneNumber(order.getPhoneNumber())
+                .description(order.getDescription())
                 .build();
     }
     

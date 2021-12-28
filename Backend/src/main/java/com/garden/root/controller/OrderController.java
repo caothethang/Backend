@@ -29,6 +29,7 @@ public class OrderController {
     @PostMapping("/")
     public BaseResponse createOrder(@RequestBody OrderRequest orderRequest) {
         OrderList orderList = OrderList.builder()
+                .userId(orderRequest.getUserId())
                 .description(orderRequest.getDescription())
                 .quantity(orderRequest.getQuantity())
                 .price(orderRequest.getPrice())
@@ -47,7 +48,7 @@ public class OrderController {
     
     @GetMapping("/{owner_id}")
     public BaseResponse getListOrderByOwnerId(
-            @PathVariable(value = "owner_id") String ownerId
+            @PathVariable(value = "owner_id") Long ownerId
     ) {
         BaseResponse<List<OrderDTO>> baseResponse = new BaseResponse();
         List<OrderList> orderLists = repository.findAllByOwnerId(ownerId);
