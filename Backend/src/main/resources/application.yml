@@ -1,10 +1,10 @@
 server:
-    port: 8080
+    port: 8081
 spring:
     datasource:
-        password: 1234
-        url: jdbc:mysql://localhost:3306/garden
-        username: root
+        password: 123456
+        url: jdbc:postgresql://localhost:5432/shoe-shop?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        username: postgres
     jpa:
         hibernate:
             ddl-auto: update
@@ -17,3 +17,8 @@ cloudinary:
     cloud-name : ${CLOUD_NAME:thangdevcloud}
     api-key : ${API_KEY:623649172437435}
     api-secret : ${API_SECRET:xxWNNj0cDxMCqnI-V71d0ZppPRg}
+
+secret:
+  app:
+    jwt-secret-key: provip123
+    jwt-expiration: 86400000
