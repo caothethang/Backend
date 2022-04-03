@@ -8,9 +8,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @EnableAsync
-public class GardenApplication {
+public class EcommerceApplication {
     
     public static void main(String[] args){
-        SpringApplication.run(GardenApplication.class, args);
+        SpringApplication.run(EcommerceApplication.class, args);
     }
 }

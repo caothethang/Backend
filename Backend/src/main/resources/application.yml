@@ -1,5 +1,5 @@
 server:
-    port: 8081
+    port: 8080
 spring:
     datasource:
         password: 123456
@@ -7,7 +7,7 @@ spring:
         username: postgres
     jpa:
         hibernate:
-            ddl-auto: update
+            ddl-auto: none
         show-sql: true
     servlet:
         multipart:
@@ -18,7 +18,6 @@ cloudinary:
     api-key : ${API_KEY:623649172437435}
     api-secret : ${API_SECRET:xxWNNj0cDxMCqnI-V71d0ZppPRg}
 
-secret:
-  app:
+app:
     jwt-secret-key: provip123
-    jwt-expiration: 86400000
+    jwt-expiration: 604800000

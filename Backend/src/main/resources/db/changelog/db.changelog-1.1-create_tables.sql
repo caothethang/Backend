@@ -1,12 +1,13 @@
 -- liquibase formatted sql
 -- changeset thangct:1.1
 
-create table if not exists "user"
+create table if not exists tbl_user
 (
     id bigserial
     constraint pk_user primary key,
     user_name varchar(255) not null,
     password varchar(255) not null,
+    email varchar(255),
     created_at timestamp,
     updated_at timestamp,
     create_by varchar(255),
@@ -14,7 +15,7 @@ create table if not exists "user"
     is_deleted boolean
 );
 
-create table if not exists "role"
+create table if not exists tbl_role
 (
     id bigserial
     constraint pk_role primary key,
@@ -26,16 +27,16 @@ create table if not exists "role"
     is_deleted boolean
 );
 
-create table if not exists "user_role"
+create table if not exists user_role
 (
     id bigserial
     constraint pk_user_role primary key,
     user_id serial not null
     constraint user_role_user_id_fk
-    references "user",
+    references tbl_user,
     role_id serial not null
     constraint user_role_role_id_fk
-    references "role",
+    references tbl_role,
     created_at timestamp,
     updated_at timestamp,
     create_by varchar(255),
@@ -43,5 +44,5 @@ create table if not exists "user_role"
     is_deleted boolean
     );
 
-INSERT INTO "role"(name) VALUES('ROLE_USER');
-INSERT INTO "role"(name) VALUES('ROLE_ADMIN');
+INSERT INTO tbl_role(name) VALUES('ROLE_USER');
+INSERT INTO tbl_role(name) VALUES('ROLE_ADMIN');
