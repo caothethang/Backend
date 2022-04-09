@@ -35,12 +35,12 @@ public class AuthController {
     
     private final AuthenticationManager authenticationManager;
     
-    private final  UserRepository userRepository;
+    private final UserRepository userRepository;
     
     private final RoleRepository roleRepository;
-
+    
     private final PasswordEncoder encoder;
-
+    
     private final JwtTokenProvider jwtTokenProvider;
     
     @PostMapping("/signin")
@@ -60,6 +60,7 @@ public class AuthController {
                 userDetails.getEmail(),
                 roles));
     }
+    
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {

@@ -15,10 +15,9 @@ public class BaseResponse<T> {
         this.status = 200;
     }
     
-    public void setFailed(int rc, String rd,Integer status) {
+    public void setFailed(int rc, String rd) {
         this.rc = rc;
         this.rd = rd;
-        this.status = status;
     }
     public String info() {
         return "rc=" + rc + "|rd=" + rd;
