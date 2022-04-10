@@ -9,12 +9,14 @@ import com.ecommerce.root.repositories.CategoryRepository;
 import com.ecommerce.root.repositories.ProductRepository;
 import com.ecommerce.root.repositories.SaleRepository;
 import com.ecommerce.root.request.CreateProductRequest;
+import com.ecommerce.root.request.UpdateProductRequest;
 import com.ecommerce.root.response.BaseResponse;
 import com.ecommerce.root.response.ProductResponse;
 import com.ecommerce.root.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +39,10 @@ public class ProductServiceImpl implements ProductService {
         if (!optionalCategory.isPresent()){
             response.setFailed(HttpCodeDef.BAD_REQUEST,"Category Not Found");
         }
-        Optional<Sale> optionalSale = saleRepository.findById(request.getSaleId());
-        if (!optionalSale.isPresent()){
-            response.setFailed(HttpCodeDef.BAD_REQUEST,"Sale Not Found");
-        }
+//        Optional<Sale> optionalSale = saleRepository.findById(request.getSaleId());
+//        if (!optionalSale.isPresent()){
+//            response.setFailed(HttpCodeDef.BAD_REQUEST,"Sale Not Found");
+//        }
         
         Product product = Product.builder()
                 .image(request.getImg())
@@ -49,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
                 .price(request.getPrice())
                 .description(request.getDescription())
                 .category(optionalCategory.get())
-                .sale(optionalSale.get())
+                .sale(null)
                 .createdAt(new Timestamp(System.currentTimeMillis()))
                 .build();
         productRepository.save(product);
@@ -67,5 +69,32 @@ public class ProductServiceImpl implements ProductService {
             });
         }
         return responseList;
+    }
+    
+    @Override
+    public ProductResponse updateProduct(Long productId, UpdateProductRequest request) {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+        Optional<Category> optionalCategory = categoryRepository.findById(request.getCategoryId());
+        Optional<Sale> optionalSale = saleRepository.findById(request.getSaleId());
+        if (optionalProduct.isPresent()){
+            Product product = optionalProduct.get();
+            product = Product.builder()
+                    .name(request.getName())
+                    .description(request.getDescription())
+                    .image(request.getImg())
+                    .price(request.getPrice())
+                    .quantity(request.getQuantity())
+                    .category(optionalCategory.get())
+                    .sale(optionalSale.get())
+                    .build();
+            product = productRepository.save(product);
+            return productMapper.toProductResponse(product);
+        }
+        return null;
+    }
+    
+    @Override
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
     }
 }
