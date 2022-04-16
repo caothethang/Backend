@@ -1,7 +1,0 @@
-.product__list_item{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 60%;
-    margin: 50px auto;
-}

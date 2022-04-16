@@ -1,7 +1,11 @@
 package com.ecommerce.root.controller.secure.admin;
 
+import com.ecommerce.root.repositories.UserRepository;
+import com.ecommerce.root.request.CategoryRequest;
 import com.ecommerce.root.request.CreateProductRequest;
 import com.ecommerce.root.request.UpdateProductRequest;
+import com.ecommerce.root.services.AdminService;
+import com.ecommerce.root.services.CategoryService;
 import com.ecommerce.root.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,11 +17,19 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/admin")
-@PreAuthorize("hasRole('ADMIN')")
+//@PreAuthorize("hasRole('ADMIN')")
 @RequiredArgsConstructor
 public class AdminController {
     
     private final ProductService productService;
+    private final CategoryService categoryService;
+    private final UserRepository userRepository;
+    private final AdminService adminService;
+    
+    @GetMapping("/users")
+    public ResponseEntity<?> getListUser(){
+        return ResponseEntity.status(HttpStatus.OK).body(adminService.getListUser());
+    }
     
     @PostMapping("/product")
     public ResponseEntity<?> createProduct(@Valid @RequestBody CreateProductRequest request){
@@ -42,4 +54,16 @@ public class AdminController {
         productService.deleteProduct(id);
         return ResponseEntity.status(HttpStatus.OK).body("Delete Success");
     }
+    
+    @PostMapping("/category")
+    public ResponseEntity<?> createCategory(@Valid @RequestBody CategoryRequest request){
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory(request));
+    }
+    
+    @PutMapping("/category")
+    public ResponseEntity<?> editCategory(@Valid @RequestBody CategoryRequest request){
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory(request));
+    }
+    
+    
 }

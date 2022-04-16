@@ -31,15 +31,11 @@ public class Product extends BaseEntity{
     private String image;
     
     @Column(name = "price")
-    private Double price;
+    private Long price;
     
     @ManyToOne
     @JoinColumn(name = "category_id")
     @ToString.Exclude
     private Category category;
     
-    @ManyToOne
-    @JoinColumn(name = "sale_id")
-    @ToString.Exclude
-    private Sale sale;
 }

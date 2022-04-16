@@ -14,7 +14,7 @@ public class CreateProductRequest {
     
     private String img;
     
-    private Double price;
+    private Long price;
     
     private Long quantity;
     

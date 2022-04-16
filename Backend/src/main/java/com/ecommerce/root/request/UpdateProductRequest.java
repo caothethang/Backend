@@ -14,13 +14,10 @@ public class UpdateProductRequest {
     
     private String img;
     
-    private Double price;
+    private Long price;
     
     private Long quantity;
     
     @JsonProperty("category_id")
     private Long categoryId;
-    
-    @JsonProperty("sale_id")
-    private Long saleId;
 }

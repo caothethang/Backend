@@ -21,7 +21,6 @@ public class ProductMapperImpl implements ProductMapper{
                 .price(product.getPrice())
                 .quantity(product.getQuantity())
                 .categoryName(product.getCategory().getName())
-                .saleVoucher(product.getSale().getVoucherCode())
                 .build();
     }
 }
