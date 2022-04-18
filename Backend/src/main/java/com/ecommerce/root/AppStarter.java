@@ -14,11 +14,13 @@ public class AppStarter implements CommandLineRunner {
     
     @Override
     public void run(String... args) throws Exception {
-        roleRepository.save(Role.builder()
-                .name("ROLE_ADMIN")
-                .build());
-        roleRepository.save(Role.builder()
-                .name("ROLE_USER")
-                .build());
+        if (roleRepository.count() == 0){
+            roleRepository.save(Role.builder()
+                    .name("ROLE_ADMIN")
+                    .build());
+            roleRepository.save(Role.builder()
+                    .name("ROLE_USER")
+                    .build());
+        }
     }
 }

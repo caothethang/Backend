@@ -16,6 +16,4 @@ public class ProductResponse {
     private Long quantity;
     @JsonProperty("category_name")
     private String categoryName;
-    @JsonProperty("sale_voucher_code")
-    private String saleVoucher;
 }

@@ -14,10 +14,15 @@ import com.ecommerce.root.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -27,6 +32,9 @@ public class ProductServiceImpl implements ProductService {
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
+    
+    @PersistenceContext
+    private EntityManager em;
     
     @Override
     public BaseResponse createProduct(CreateProductRequest request) {
@@ -51,15 +59,13 @@ public class ProductServiceImpl implements ProductService {
     }
     
     @Override
-    public List<ProductResponse> getAllProduct() {
-        List<Product> products = productRepository.findAll();
-        List<ProductResponse> responseList = new ArrayList<>();
-        if (Objects.nonNull(products)){
-            products.forEach(product -> {
-                responseList.add(productMapper.toProductResponse(product));
-            });
-        }
-        return responseList;
+    public List<ProductResponse> getAllProduct(String category, Long minPrice, Long maxPrice, String name, Long pageIndex) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Product> cq = cb.createQuery(Product.class);
+        Root<Product> root = cq.from(Product.class);
+        List<Predicate> listPredicate = new ArrayList<>();
+//        if ()
+        return null;
     }
     
     @Override

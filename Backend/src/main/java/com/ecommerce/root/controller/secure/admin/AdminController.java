@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/admin")
-//@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasRole('ADMIN')")
 @RequiredArgsConstructor
 public class AdminController {
     
@@ -37,8 +37,14 @@ public class AdminController {
     }
     
     @GetMapping("/product")
-    public ResponseEntity<?> getAllProduct(){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct());
+    public ResponseEntity<?> getAllProduct(
+            @RequestParam(value = "category")String category,
+            @RequestParam(value = "min_price") Long minPrice,
+            @RequestParam(value = "max_price") Long maxPrice,
+            @RequestParam(value = "name") String name,
+            @RequestParam(value = "page") Long pageIndex
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category,minPrice,maxPrice,name,pageIndex));
     }
     
     @PutMapping("/{id}")

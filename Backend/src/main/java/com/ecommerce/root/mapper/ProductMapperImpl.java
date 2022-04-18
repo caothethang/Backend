@@ -20,7 +20,6 @@ public class ProductMapperImpl implements ProductMapper{
                 .image(product.getImage())
                 .price(product.getPrice())
                 .quantity(product.getQuantity())
-                .categoryName(product.getCategory().getName())
                 .build();
     }
 }

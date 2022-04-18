@@ -1,6 +1,5 @@
 package com.ecommerce.root.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -15,17 +14,17 @@ import java.util.List;
 @NoArgsConstructor
 @DynamicUpdate
 @SuperBuilder(toBuilder = true)
-public class CustomerInfo extends BaseEntity{
+public class CustomerInfo extends BaseEntity {
     
-    @JsonProperty("full_name")
+    @Column(name = "full_name")
     private String fullName;
-    @JsonProperty("email")
+    @Column(name = "email")
     private String email;
-    @JsonProperty("address")
+    @Column(name = "address")
     private String address;
-    @JsonProperty("phone")
+    @Column(name = "phone")
     private String phone;
     
-    @OneToMany(mappedBy = "customerInfo",fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customerInfo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Orders> orders;
 }
