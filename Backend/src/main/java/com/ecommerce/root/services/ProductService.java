@@ -11,10 +11,11 @@ public interface ProductService {
     
     BaseResponse createProduct(CreateProductRequest request);
     
-    
     ProductResponse updateProduct(Long productId, UpdateProductRequest request);
     
     void deleteProduct(Long id);
     
-    List<ProductResponse> getAllProduct(String category, Long minPrice, Long maxPrice, String name, Long pageIndex);
+    ProductResponse getProductDetail(Long id);
+    
+    List<ProductResponse> getAllProduct(String category, Long minPrice, Long maxPrice, String name,Integer sort, Integer pageIndex);
 }

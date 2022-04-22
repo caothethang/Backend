@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 @Data
 @EqualsAndHashCode
 public class CreateProductRequest {
@@ -21,6 +23,9 @@ public class CreateProductRequest {
     @JsonProperty("category_id")
     private Long categoryId;
     
-    @JsonProperty("sale_id")
-    private Long saleId;
+    @JsonProperty("has_free_shipping")
+    private Boolean hasFreeShipping;
+    
+    private List<String> size;
+    
 }

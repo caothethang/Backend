@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_product")
@@ -33,9 +34,18 @@ public class Product extends BaseEntity{
     @Column(name = "price")
     private Long price;
     
+    @Column(name = "size")
+    private String size;
+    
+    @Column(name = "has_free_shipping")
+    private boolean hasFreeShipping;
+    
     @ManyToOne
     @JoinColumn(name = "category_id")
     @ToString.Exclude
     private Category category;
+    
+    @Column(name = "rating")
+    private Integer rate;
     
 }

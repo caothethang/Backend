@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/customer")
@@ -18,6 +20,12 @@ public class CustomerController {
     
     private final OrderService orderService;
     private final ProductService productService;
+    
+//    @PostMapping("/add-to-cart")
+//    public ResponseEntity<?> addToCart(){
+//
+//    }
+    
     
     @PostMapping("/buy")
     public ResponseEntity<?> buyProduct(@RequestBody BuyProductRequest buyProductRequest){
@@ -30,17 +38,25 @@ public class CustomerController {
             @RequestParam(value = "min_price",required = false) Long minPrice,
             @RequestParam(value = "max_price",required = false) Long maxPrice,
             @RequestParam(value = "name",required = false) String name,
-            @RequestParam(value = "page",required = false) Long pageIndex
+            @RequestParam(value = "sort") Integer sort,
+            @RequestParam(value = "page") Integer pageIndex
     ){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category,minPrice,maxPrice,name,pageIndex));
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category,minPrice,maxPrice,name,sort,pageIndex));
+    }
+    
+    @GetMapping("/product/{id}")
+    public ResponseEntity<?> getAllProduct(
+            @PathVariable(value = "id") Long productId
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getProductDetail(productId));
     }
     
     // xem lịch sử mua hàng
     @GetMapping("/order/history")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> getOrderHistory(
+    public ResponseEntity<?> getOrderHistory(HttpServletRequest servletRequest,
             @RequestBody OrderHistoryRequest orderHistoryRequest
     ){
-        return null;
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrderHistory(orderHistoryRequest));
     }
 }

@@ -36,7 +36,17 @@ public class CategoryServiceImpl implements CategoryService {
     }
     
     @Override
-    public BaseResponse editCategory(CategoryRequest request) {
-        return null;
+    public BaseResponse editCategory(Long id,CategoryRequest request) {
+        BaseResponse response = new BaseResponse();
+        Category category = categoryRepository.findById(id).get();
+        if (category == null){
+            response.setFailed(500,"Fail Edit Category");
+            return response;
+        }
+        category.setName(request.getCategoryName());
+        categoryRepository.save(category);
+        response.setSuccess();
+        return response;
+        
     }
 }

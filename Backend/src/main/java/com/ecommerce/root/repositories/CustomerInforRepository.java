@@ -4,6 +4,10 @@ import com.ecommerce.root.entity.CustomerInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CustomerInforRepository extends JpaRepository<CustomerInfo,Long> {
+    
+    List<CustomerInfo> findAllByEmail(String email);
 }

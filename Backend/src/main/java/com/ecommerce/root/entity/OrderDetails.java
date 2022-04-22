@@ -1,6 +1,7 @@
 package com.ecommerce.root.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicUpdate;
@@ -12,13 +13,14 @@ import javax.persistence.*;
 @DynamicUpdate
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @SuperBuilder(toBuilder = true)
 public class OrderDetails extends BaseEntity{
     
     @Column(name = "quantity")
     private Long quantity;
     @Column(name = "size")
-    private String size;
+    private Integer size;
     @Column(name = "gender")
     private Integer gender;
     

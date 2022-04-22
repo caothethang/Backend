@@ -42,9 +42,10 @@ public class AdminController {
             @RequestParam(value = "min_price") Long minPrice,
             @RequestParam(value = "max_price") Long maxPrice,
             @RequestParam(value = "name") String name,
-            @RequestParam(value = "page") Long pageIndex
+            @RequestParam(value = "sort") Integer sort,
+            @RequestParam(value = "page") Integer pageIndex
     ){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category,minPrice,maxPrice,name,pageIndex));
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category,minPrice,maxPrice,name,sort,pageIndex));
     }
     
     @PutMapping("/{id}")
@@ -66,10 +67,11 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory(request));
     }
     
-    @PutMapping("/category")
-    public ResponseEntity<?> editCategory(@Valid @RequestBody CategoryRequest request){
-        return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory(request));
+    @PutMapping("/category/{id}")
+    public ResponseEntity<?> editCategory(
+            @PathVariable(name = "id") Long id
+            ,@Valid @RequestBody CategoryRequest request){
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.editCategory(id,request));
     }
-    
     
 }

@@ -11,6 +11,8 @@ import com.ecommerce.root.repositories.OrderRepository;
 import com.ecommerce.root.repositories.ProductRepository;
 import com.ecommerce.root.request.BuyProductRequest;
 import com.ecommerce.root.request.OrderDetailRequest;
+import com.ecommerce.root.request.OrderHistoryRequest;
+import com.ecommerce.root.response.OrderHistoryResponse;
 import com.ecommerce.root.services.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,5 +71,28 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         return ResponseEntity.status(HttpStatus.OK).body("Mua hàng thành công");
+    }
+    
+    @Override
+    public List<OrderHistoryResponse> getOrderHistory(OrderHistoryRequest request) {
+        String email = request.getEmail();
+        List<CustomerInfo> customerInfos = customerInforRepository.findAllByEmail(email);
+        List<OrderHistoryResponse> orderHistoryResponses = new ArrayList<>();
+        customerInfos.forEach(customerInfo -> {
+            List<Orders> ordersList = customerInfo.getOrders();
+            ordersList.forEach(orders -> {
+                List<OrderDetails> orderDetails= orders.getOrderDetails();
+                orderDetails.forEach(orderDetail ->{
+                    OrderHistoryResponse orderHistoryResponse = OrderHistoryResponse.builder()
+                            .productImage(orderDetail.getProduct().getImage())
+                            .gender(orderDetail.getGender())
+                            .quantity(orderDetail.getQuantity())
+                            .size(orderDetail.getSize())
+                            .build();
+                });
+                
+            });
+        });
+        return null;
     }
 }
