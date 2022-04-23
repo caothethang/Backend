@@ -18,7 +18,7 @@ import javax.validation.Valid;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/admin")
-@PreAuthorize("hasRole('ADMIN')")
+//@PreAuthorize("hasRole('ADMIN')")
 @RequiredArgsConstructor
 public class AdminController {
     
