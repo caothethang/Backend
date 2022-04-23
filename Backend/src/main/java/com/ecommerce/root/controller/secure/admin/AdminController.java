@@ -38,12 +38,12 @@ public class AdminController {
     
     @GetMapping("/product")
     public ResponseEntity<?> getAllProduct(
-            @RequestParam(value = "category")String category,
-            @RequestParam(value = "min_price") Long minPrice,
-            @RequestParam(value = "max_price") Long maxPrice,
-            @RequestParam(value = "name") String name,
-            @RequestParam(value = "sort") Integer sort,
-            @RequestParam(value = "page") Integer pageIndex
+            @RequestParam(value = "category",required = false)String category,
+            @RequestParam(value = "min_price",required = false) Long minPrice,
+            @RequestParam(value = "max_price",required = false) Long maxPrice,
+            @RequestParam(value = "name",required = false) String name,
+            @RequestParam(value = "sort",required = false) Integer sort,
+            @RequestParam(value = "page",required = false) Integer pageIndex
     ){
         return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category,minPrice,maxPrice,name,sort,pageIndex));
     }

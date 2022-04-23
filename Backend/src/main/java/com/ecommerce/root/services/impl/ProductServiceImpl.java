@@ -76,7 +76,7 @@ public class ProductServiceImpl implements ProductService {
         
             Path<Object> sortClause = null;
             Order order = null;
-        
+            
             if (Objects.nonNull(sort)){
                 
                 switch (sort){
@@ -100,6 +100,12 @@ public class ProductServiceImpl implements ProductService {
                         sortClause = root.get("name");
                         order = cb.desc(sortClause);
                 }
+            }{
+                sortClause = root.get("name");
+                order = cb.desc(sortClause);
+            }
+            if (Objects.isNull(pageIndex)){
+                pageIndex = 0;
             }
         
             Predicate[] finalPredicate = new Predicate[listPredicate.size()];
