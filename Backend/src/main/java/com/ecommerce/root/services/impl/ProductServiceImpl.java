@@ -157,18 +157,7 @@ public class ProductServiceImpl implements ProductService {
             return null;
         }
         Product product = optionalProduct.get();
-        ProductResponse productResponse = ProductResponse.builder()
-                .id(product.getId())
-                .name(product.getName())
-                .description(product.getDescription())
-                .image(product.getImage())
-                .quantity(product.getQuantity())
-                .price(product.getPrice())
-                .hasFreeShipping(product.isHasFreeShipping())
-                .rate(product.getRate())
-                .categoryId(product.getCategory().getId())
-                .categoryName(product.getCategory().getName())
-                .build();
+        ProductResponse productResponse = productMapper.toProductResponse(product);
         return productResponse;
     }
 }

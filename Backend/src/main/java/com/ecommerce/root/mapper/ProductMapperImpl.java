@@ -29,6 +29,7 @@ public class ProductMapperImpl implements ProductMapper{
                 .price(product.getPrice())
                 .size(size)
                 .quantity(product.getQuantity())
+                .categoryId(product.getCategory().getId())
                 .categoryName(product.getCategory().getName())
                 .hasFreeShipping(product.isHasFreeShipping())
                 .rate(product.getRate())
