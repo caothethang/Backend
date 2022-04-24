@@ -49,15 +49,15 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category,minPrice,maxPrice,name,sort,pageIndex));
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/product/update")
     public ResponseEntity<?> updateProduct(
-            @PathVariable(value = "id") Long productId,@RequestBody UpdateProductRequest request){
+            @RequestParam(value = "id") Long productId,@RequestBody UpdateProductRequest request){
         return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(productId,request));
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/product/delete")
     public ResponseEntity<?> deleteProduct(
-            @PathVariable(value = "id") Long id
+            @RequestParam(value = "id") Long id
     ){
         productService.deleteProduct(id);
         return ResponseEntity.status(HttpStatus.OK).body("Delete Success");
