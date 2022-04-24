@@ -36,10 +36,10 @@ public class ProductServiceImpl implements ProductService {
     public BaseResponse createProduct(CreateProductRequest request) {
         BaseResponse response = new BaseResponse();
         Optional<Category> optionalCategory = categoryRepository.findById(request.getCategoryId());
-        if (!optionalCategory.isPresent()){
-            response.setFailed(HttpCodeDef.BAD_REQUEST,"Category Not Found");
+        if (! optionalCategory.isPresent()) {
+            response.setFailed(HttpCodeDef.BAD_REQUEST, "Category Not Found");
         }
-        String size = String.join(",",request.getSize());
+        String size = String.join(",", request.getSize());
         Product product = Product.builder()
                 .image(request.getImg())
                 .name(request.getName())
@@ -57,29 +57,29 @@ public class ProductServiceImpl implements ProductService {
     }
     
     @Override
-    public List<ProductResponse> getAllProduct(String category, Long minPrice, Long maxPrice, String name,Integer sort ,Integer pageIndex) {
+    public List<ProductResponse> getAllProduct(String category, Long minPrice, Long maxPrice, String name, Integer sort, Integer pageIndex) {
         List<ProductResponse> productResponses = null;
         try {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Product> cq = cb.createQuery(Product.class);
             Root<Product> root = cq.from(Product.class);
             List<Predicate> listPredicate = new ArrayList<>();
-            if (Objects.nonNull(category)){
-                listPredicate.add(cb.equal(root.get("category").get("name"),category));
+            if (Objects.nonNull(category)) {
+                listPredicate.add(cb.equal(root.get("category").get("name"), category));
             }
-            if (Objects.nonNull(minPrice) && Objects.nonNull(maxPrice)){
-                listPredicate.add(cb.between(root.get("price"),minPrice,maxPrice));
+            if (Objects.nonNull(minPrice) && Objects.nonNull(maxPrice)) {
+                listPredicate.add(cb.between(root.get("price"), minPrice, maxPrice));
             }
-            if (Objects.nonNull(name)){
-                listPredicate.add(cb.like(cb.upper(root.get("name")),"%"+name.toUpperCase()+"%"));
+            if (Objects.nonNull(name)) {
+                listPredicate.add(cb.like(cb.upper(root.get("name")), "%" + name.toUpperCase() + "%"));
             }
-        
+            
             Path<Object> sortClause = null;
             Order order = null;
             
-            if (Objects.nonNull(sort)){
+            if (Objects.nonNull(sort)) {
                 
-                switch (sort){
+                switch (sort) {
                     case 0:
                         sortClause = root.get("name");
                         order = cb.asc(sortClause);
@@ -100,20 +100,21 @@ public class ProductServiceImpl implements ProductService {
                         sortClause = root.get("name");
                         order = cb.desc(sortClause);
                 }
-            }{
+            }
+            {
                 sortClause = root.get("name");
                 order = cb.desc(sortClause);
             }
-            if (Objects.isNull(pageIndex)){
+            if (Objects.isNull(pageIndex)) {
                 pageIndex = 0;
             }
-        
+            
             Predicate[] finalPredicate = new Predicate[listPredicate.size()];
             listPredicate.toArray(finalPredicate);
             TypedQuery<Product> query = em.createQuery(cq.select(root).where(cb.and(finalPredicate)).orderBy(order));
             query.setMaxResults(10);
             query.setFirstResult(pageIndex * 10);
-        
+            
             List<Product> productList = query.getResultList();
             productResponses = new ArrayList<>();
             for (Product product : productList) {
@@ -129,16 +130,14 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponse updateProduct(Long productId, UpdateProductRequest request) {
         Optional<Product> optionalProduct = productRepository.findById(productId);
         Optional<Category> optionalCategory = categoryRepository.findById(request.getCategoryId());
-        if (optionalProduct.isPresent()){
+        if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
-            product = Product.builder()
-                    .name(request.getName())
-                    .description(request.getDescription())
-                    .image(request.getImg())
-                    .price(request.getPrice())
-                    .quantity(request.getQuantity())
-                    .category(optionalCategory.get())
-                    .build();
+            product.setName(request.getName());
+            product.setDescription(request.getDescription());
+            product.setImage(request.getImg());
+            product.setPrice(request.getPrice());
+            product.setQuantity(request.getQuantity());
+            product.setCategory(optionalCategory.get());
             product = productRepository.save(product);
             return productMapper.toProductResponse(product);
         }
@@ -153,7 +152,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponse getProductDetail(Long id) {
         Optional<Product> optionalProduct = productRepository.findById(id);
-        if (!optionalProduct.isPresent()){
+        if (! optionalProduct.isPresent()) {
             return null;
         }
         Product product = optionalProduct.get();
