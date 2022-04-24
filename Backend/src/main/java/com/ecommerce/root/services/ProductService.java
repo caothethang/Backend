@@ -11,7 +11,7 @@ public interface ProductService {
     
     BaseResponse createProduct(CreateProductRequest request);
     
-    ProductResponse updateProduct(Long productId, UpdateProductRequest request);
+    ProductResponse updateProduct(UpdateProductRequest request);
     
     void deleteProduct(Long id);
     

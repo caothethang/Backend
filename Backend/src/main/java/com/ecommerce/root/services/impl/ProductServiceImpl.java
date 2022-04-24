@@ -127,8 +127,8 @@ public class ProductServiceImpl implements ProductService {
     }
     
     @Override
-    public ProductResponse updateProduct(Long productId, UpdateProductRequest request) {
-        Optional<Product> optionalProduct = productRepository.findById(productId);
+    public ProductResponse updateProduct(UpdateProductRequest request) {
+        Optional<Product> optionalProduct = productRepository.findById(request.getId());
         Optional<Category> optionalCategory = categoryRepository.findById(request.getCategoryId());
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();

@@ -51,8 +51,8 @@ public class AdminController {
     
     @PutMapping("/product/update")
     public ResponseEntity<?> updateProduct(
-            @RequestParam(value = "id") Long productId,@RequestBody UpdateProductRequest request){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(productId,request));
+           @RequestBody UpdateProductRequest request){
+        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(request));
     }
     
     @DeleteMapping("/product/delete")

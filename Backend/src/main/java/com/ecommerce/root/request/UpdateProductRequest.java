@@ -8,6 +8,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode
 public class UpdateProductRequest {
     
+    private Long id;
+    
     private String name;
     
     private String description;
