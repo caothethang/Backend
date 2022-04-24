@@ -44,12 +44,7 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category,minPrice,maxPrice,name,sort,pageIndex));
     }
     
-    @GetMapping("/product/{id}")
-    public ResponseEntity<?> getAllProduct(
-            @PathVariable(value = "id") Long productId
-    ){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.getProductDetail(productId));
-    }
+    
     
     // xem lịch sử mua hàng
     @GetMapping("/order/history")
