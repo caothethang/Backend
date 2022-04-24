@@ -166,6 +166,7 @@ public class ProductServiceImpl implements ProductService {
                 .price(product.getPrice())
                 .hasFreeShipping(product.isHasFreeShipping())
                 .rate(product.getRate())
+                .categoryId(product.getCategory().getId())
                 .categoryName(product.getCategory().getName())
                 .build();
         return productResponse;

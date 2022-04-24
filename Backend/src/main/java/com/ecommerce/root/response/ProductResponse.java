@@ -17,6 +17,8 @@ public class ProductResponse {
     private String image;
     private Long price;
     private Long quantity;
+    @JsonProperty("category_id")
+    private Long categoryId;
     @JsonProperty("category_name")
     private String categoryName;
     private Boolean hasFreeShipping;
