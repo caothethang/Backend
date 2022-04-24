@@ -21,11 +21,6 @@ public class CustomerController {
     private final OrderService orderService;
     private final ProductService productService;
     
-//    @PostMapping("/add-to-cart")
-//    public ResponseEntity<?> addToCart(){
-//
-//    }
-    
     
     @PostMapping("/buy")
     public ResponseEntity<?> buyProduct(@RequestBody BuyProductRequest buyProductRequest){
