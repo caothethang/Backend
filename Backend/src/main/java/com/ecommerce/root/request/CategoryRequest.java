@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class CategoryRequest {
+    private Long id;
     @JsonProperty("category_name")
     private String categoryName;
 }

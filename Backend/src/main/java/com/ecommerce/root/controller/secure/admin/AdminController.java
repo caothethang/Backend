@@ -68,11 +68,10 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory(request));
     }
     
-    @PostMapping("/category")
+    @PostMapping("/category/edit")
     public ResponseEntity<?> editCategory(
-            @RequestParam(name = "id") Long id
-            ,@Valid @RequestBody CategoryRequest request){
-        return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.editCategory(id,request));
+            @Valid @RequestBody CategoryRequest request){
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.editCategory(request));
     }
     
 }
