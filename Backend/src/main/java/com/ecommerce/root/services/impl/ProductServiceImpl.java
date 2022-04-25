@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
     
     @Override
     public BaseResponse createProduct(CreateProductRequest request) {
-        BaseResponse response = new BaseResponse();
+        BaseResponse response = BaseResponse.builder().build();
         Optional<Category> optionalCategory = categoryRepository.findById(request.getCategoryId());
         if (! optionalCategory.isPresent()) {
             response.setFailed(HttpCodeDef.BAD_REQUEST, "Category Not Found");

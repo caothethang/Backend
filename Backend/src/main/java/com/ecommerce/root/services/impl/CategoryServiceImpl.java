@@ -20,7 +20,7 @@ public class CategoryServiceImpl implements CategoryService {
     
     @Override
     public BaseResponse createCategory(CategoryRequest request) {
-        BaseResponse response = new BaseResponse();
+        BaseResponse response = BaseResponse.builder().build();
         try {
             String categoryName = request.getCategoryName();
             Category category = Category.builder()
@@ -39,7 +39,7 @@ public class CategoryServiceImpl implements CategoryService {
     
     @Override
     public BaseResponse editCategory(CategoryRequest request) {
-        BaseResponse response = new BaseResponse();
+        BaseResponse response = BaseResponse.builder().build();
         Category category = categoryRepository.findById(request.getId()).get();
         if (category == null){
             response.setFailed(500,"Fail Edit Category");
