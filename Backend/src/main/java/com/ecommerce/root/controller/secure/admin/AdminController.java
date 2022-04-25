@@ -49,7 +49,7 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category,minPrice,maxPrice,name,sort,pageIndex));
     }
     
-    @PutMapping("/product/update")
+    @PostMapping("/product/update")
     public ResponseEntity<?> updateProduct(
            @RequestBody UpdateProductRequest request){
         return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(request));
