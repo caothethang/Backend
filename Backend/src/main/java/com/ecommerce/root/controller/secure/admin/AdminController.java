@@ -55,7 +55,7 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(request));
     }
     
-    @DeleteMapping("/product/delete")
+    @PostMapping("/product/delete")
     public ResponseEntity<?> deleteProduct(
             @RequestParam(value = "id") Long id
     ){
@@ -68,7 +68,7 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory(request));
     }
     
-    @PutMapping("/category")
+    @PostMapping("/category")
     public ResponseEntity<?> editCategory(
             @RequestParam(name = "id") Long id
             ,@Valid @RequestBody CategoryRequest request){
