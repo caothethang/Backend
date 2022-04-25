@@ -20,4 +20,4 @@ cloudinary:
 
 app:
     jwt-secret-key: provip123
-    jwt-expiration: 604800000
+    jwt-expiration: 604800000000
