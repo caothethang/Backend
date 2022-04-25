@@ -79,7 +79,7 @@ public class AdminController {
     
     @PostMapping("/category/delete")
     public ResponseEntity<?> deleteCategory(
-            @RequestBody Long id) {
+            @RequestParam("id") Long id) {
         try {
             categoryRepository.deleteById(id);
             return ResponseEntity.ok(BaseResponse.builder()
