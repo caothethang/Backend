@@ -1,5 +1,6 @@
 package com.ecommerce.root.controller.secure.admin;
 
+import com.ecommerce.root.repositories.CategoryRepository;
 import com.ecommerce.root.repositories.UserRepository;
 import com.ecommerce.root.request.CategoryRequest;
 import com.ecommerce.root.request.CreateProductRequest;
@@ -26,6 +27,7 @@ public class AdminController {
     private final CategoryService categoryService;
     private final UserRepository userRepository;
     private final AdminService adminService;
+    private final CategoryRepository categoryRepository;
     
     @GetMapping("/users")
     public ResponseEntity<?> getListUser(){
@@ -72,6 +74,17 @@ public class AdminController {
     public ResponseEntity<?> editCategory(
             @Valid @RequestBody CategoryRequest request){
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.editCategory(request));
+    }
+
+    @PostMapping("/category/delete")
+    public ResponseEntity<?> deleteCategory(
+            @RequestParam("id") Long id){
+        try {
+            categoryRepository.deleteById(id);
+            return ResponseEntity.ok("Xóa thành công");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Xóa không thành công");
+        }
     }
     
 }
