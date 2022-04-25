@@ -4,11 +4,13 @@ import com.ecommerce.root.entity.Category;
 import com.ecommerce.root.repositories.CategoryRepository;
 import com.ecommerce.root.request.CategoryRequest;
 import com.ecommerce.root.response.BaseResponse;
+import com.ecommerce.root.response.CategoryResponse;
 import com.ecommerce.root.services.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -48,5 +50,19 @@ public class CategoryServiceImpl implements CategoryService {
         response.setSuccess();
         return response;
         
+    }
+
+    @Override
+    public CategoryResponse getCategoryById(Long id) {
+        Optional<Category> category = categoryRepository.findById(id);
+        if (category.isPresent()){
+            Category entity = category.get();
+            CategoryResponse categoryResponse = CategoryResponse.builder()
+                    .id(entity.getId())
+                    .name(entity.getName())
+                    .build();
+            return categoryResponse;
+        }
+        return null;
     }
 }

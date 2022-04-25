@@ -3,6 +3,7 @@ package com.ecommerce.root.controller;
 import com.ecommerce.root.entity.Category;
 import com.ecommerce.root.repositories.CategoryRepository;
 import com.ecommerce.root.response.CategoryResponse;
+import com.ecommerce.root.services.CategoryService;
 import com.ecommerce.root.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ public class PublicController {
     
     private final CategoryRepository categoryRepository;
     private final ProductService productService;
+    private final CategoryService categoryService;
     
     @GetMapping("/category")
     public List<CategoryResponse> getListCategory(){
@@ -32,6 +34,13 @@ public class PublicController {
             categoryResponses.add(categoryResponse);
         });
         return categoryResponses;
+    }
+
+    @GetMapping("/category/detail")
+    public CategoryResponse getCategory(
+            @RequestParam(value = "id") Long id
+    ){
+        return categoryService.getCategoryById(id);
     }
     
     @GetMapping("/product")
