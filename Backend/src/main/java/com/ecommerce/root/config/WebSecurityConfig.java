@@ -82,17 +82,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
     }
     
-    @Bean
-    CorsConfiguration corsConfiguration() {
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.applyPermitDefaultValues();
-        corsConfiguration.addAllowedMethod(HttpMethod.GET);
-        corsConfiguration.addAllowedMethod(HttpMethod.POST);
-        corsConfiguration.addAllowedMethod(HttpMethod.PATCH);
-        corsConfiguration.addAllowedMethod(HttpMethod.PUT);
-        corsConfiguration.addAllowedMethod(HttpMethod.DELETE);
-        return corsConfiguration;
-    }
+//    @Bean
+//    CorsConfiguration corsConfiguration() {
+//        CorsConfiguration corsConfiguration = new CorsConfiguration();
+//        corsConfiguration.applyPermitDefaultValues();
+//        corsConfiguration.addAllowedMethod(HttpMethod.GET);
+//        corsConfiguration.addAllowedMethod(HttpMethod.POST);
+//        corsConfiguration.addAllowedMethod(HttpMethod.PATCH);
+//        corsConfiguration.addAllowedMethod(HttpMethod.PUT);
+//        corsConfiguration.addAllowedMethod(HttpMethod.DELETE);
+//        return corsConfiguration;
+//    }
     
     @Bean
     public WebMvcConfigurer corsConfigurer() {
