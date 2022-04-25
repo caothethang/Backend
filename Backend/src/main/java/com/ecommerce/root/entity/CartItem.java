@@ -5,22 +5,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Entity
-@Table(name = "cart")
 @Data
+@Entity
+@Table(name = "cart_item")
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamicUpdate
-public class Cart extends BaseEntity{
-
+public class CartItem extends BaseEntity{
+    
     @ManyToOne
-    private User user;
+    private Cart cart;
+    
+    @Column(name = "product_name")
+    private String productName;
+    
+    @Column(name = "quantity")
+    private Integer quantity;
     
     @Column(name = "price")
     private Long price;
+    
+    
 }

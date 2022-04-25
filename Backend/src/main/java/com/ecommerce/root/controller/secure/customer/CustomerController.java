@@ -40,7 +40,6 @@ public class CustomerController {
     }
     
     
-    
     // xem lịch sử mua hàng
     @GetMapping("/order/history")
     @PreAuthorize("hasRole('USER')")

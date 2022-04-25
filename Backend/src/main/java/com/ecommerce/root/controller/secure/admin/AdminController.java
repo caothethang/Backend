@@ -5,6 +5,7 @@ import com.ecommerce.root.repositories.UserRepository;
 import com.ecommerce.root.request.CategoryRequest;
 import com.ecommerce.root.request.CreateProductRequest;
 import com.ecommerce.root.request.UpdateProductRequest;
+import com.ecommerce.root.response.BaseResponse;
 import com.ecommerce.root.services.AdminService;
 import com.ecommerce.root.services.CategoryService;
 import com.ecommerce.root.services.ProductService;
@@ -30,60 +31,64 @@ public class AdminController {
     private final CategoryRepository categoryRepository;
     
     @GetMapping("/users")
-    public ResponseEntity<?> getListUser(){
+    public ResponseEntity<?> getListUser() {
         return ResponseEntity.status(HttpStatus.OK).body(adminService.getListUser());
     }
     
     @PostMapping("/product")
-    public ResponseEntity<?> createProduct(@Valid @RequestBody CreateProductRequest request){
+    public ResponseEntity<?> createProduct(@Valid @RequestBody CreateProductRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.createProduct(request));
     }
     
     @GetMapping("/product")
     public ResponseEntity<?> getAllProduct(
-            @RequestParam(value = "category",required = false)String category,
-            @RequestParam(value = "min_price",required = false) Long minPrice,
-            @RequestParam(value = "max_price",required = false) Long maxPrice,
-            @RequestParam(value = "name",required = false) String name,
-            @RequestParam(value = "sort",required = false) Integer sort,
-            @RequestParam(value = "page",required = false) Integer pageIndex
-    ){
-        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category,minPrice,maxPrice,name,sort,pageIndex));
+            @RequestParam(value = "category", required = false) String category,
+            @RequestParam(value = "min_price", required = false) Long minPrice,
+            @RequestParam(value = "max_price", required = false) Long maxPrice,
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "sort", required = false) Integer sort,
+            @RequestParam(value = "page", required = false) Integer pageIndex
+    ) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category, minPrice, maxPrice, name, sort, pageIndex));
     }
     
     @PostMapping("/product/update")
     public ResponseEntity<?> updateProduct(
-           @RequestBody UpdateProductRequest request){
+            @RequestBody UpdateProductRequest request) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(request));
     }
     
     @PostMapping("/product/delete")
     public ResponseEntity<?> deleteProduct(
             @RequestParam(value = "id") Long id
-    ){
+    ) {
         productService.deleteProduct(id);
         return ResponseEntity.status(HttpStatus.OK).body("Delete Success");
     }
     
     @PostMapping("/category")
-    public ResponseEntity<?> createCategory(@Valid @RequestBody CategoryRequest request){
+    public ResponseEntity<?> createCategory(@Valid @RequestBody CategoryRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory(request));
     }
     
     @PostMapping("/category/edit")
     public ResponseEntity<?> editCategory(
-            @Valid @RequestBody CategoryRequest request){
+            @Valid @RequestBody CategoryRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.editCategory(request));
     }
-
+    
     @PostMapping("/category/delete")
     public ResponseEntity<?> deleteCategory(
-            @RequestBody Long id){
+            @RequestBody Long id) {
         try {
             categoryRepository.deleteById(id);
-            return ResponseEntity.ok("Xóa thành công");
+            return ResponseEntity.ok(BaseResponse.builder()
+                    .status(200)
+                    .build());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Xóa không thành công");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BaseResponse.builder()
+                    .status(500)
+                    .build());
         }
     }
     
