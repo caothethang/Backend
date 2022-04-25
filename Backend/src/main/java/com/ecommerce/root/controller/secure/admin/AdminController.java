@@ -63,7 +63,16 @@ public class AdminController {
             @RequestParam(value = "id") Long id
     ) {
         productService.deleteProduct(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Delete Success");
+        try {
+            productService.deleteProduct(id);
+            return ResponseEntity.ok(BaseResponse.builder()
+                    .status(200)
+                    .build());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BaseResponse.builder()
+                    .status(500)
+                    .build());
+        }
     }
     
     @PostMapping("/category")
