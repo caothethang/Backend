@@ -106,5 +106,13 @@ public class AdminController {
     public ResponseEntity<?> getListOrder(){
         return ResponseEntity.status(HttpStatus.OK).body(orderService.getListOrderRequest());
     }
+
+    @PostMapping("/order/approve")
+    public ResponseEntity<?> approveOrder(
+            @RequestParam("id") Long orderId,
+            @RequestParam("status") Integer status
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.approveOrder(orderId,status));
+    }
     
 }

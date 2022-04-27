@@ -37,7 +37,14 @@ public class CustomerController {
     ){
         return ResponseEntity.status(HttpStatus.OK).body(cartService.getCart(userId));
     }
-    
+
+    @PostMapping("/cart/remove")
+    public ResponseEntity<?> removeCartItem(
+            @RequestParam("id") Long cartItemId
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(cartService.removeCartItem(cartItemId));
+    }
+
     @PostMapping("/buy")
     public ResponseEntity<?> buyProduct(@RequestBody BuyProductRequest buyProductRequest){
         return ResponseEntity.status(HttpStatus.OK).body(orderService.buyProduct(buyProductRequest));
@@ -54,8 +61,7 @@ public class CustomerController {
     ){
         return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category,minPrice,maxPrice,name,sort,pageIndex));
     }
-    
-    
+
     // xem lịch sử mua hàng
     @GetMapping("/order/history")
     public ResponseEntity<?> getOrderHistory(
@@ -63,4 +69,6 @@ public class CustomerController {
     ){
         return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrderHistory(orderHistoryRequest));
     }
+
+
 }

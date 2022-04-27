@@ -53,6 +53,16 @@ public class CartImpl implements CartService {
         Cart cart = cartRepository.findByUserId(request.getUserId());
         Product product = optionalProduct.get();
         if (Objects.nonNull(cart)){
+            List<CartItem> cartItems = cart.getCartItems();
+            for (CartItem e : cartItems){
+                if (e.getId() == request.getProductId()){
+                    return BaseResponse.builder()
+                            .status(501)
+                            .data("Đã tồn tại trong giỏ hàng")
+                            .build();
+                }
+            }
+
             CartItem cartItem = CartItem.builder()
                     .cart(cart)
                     .price(request.getPrice())
@@ -79,7 +89,6 @@ public class CartImpl implements CartService {
                     .build();
             cartItemRepository.save(cartItem);
         }
-
         return BaseResponse.builder()
                 .status(200)
                 .data("Thêm vào giỏ hàng thành công")
@@ -87,6 +96,7 @@ public class CartImpl implements CartService {
         
     }
 
+    @Override
     public Object getCart(Long userId){
         Optional<User> optionalUser = userRepository.findById(userId);
         List<CartResponse> listCartResponse = new ArrayList<>();
@@ -108,5 +118,21 @@ public class CartImpl implements CartService {
                 .data(listCartResponse)
                 .status(200)
                 .build();
+    }
+
+    @Override
+    public Object removeCartItem(Long cartItemId) {
+        try {
+            cartItemRepository.deleteById(cartItemId);
+            return BaseResponse.builder()
+                    .status(200)
+                    .data("Xóa thành công")
+                    .build();
+        } catch (Exception e) {
+            return BaseResponse.builder()
+                    .status(500)
+                    .data("Xóa không thành công")
+                    .build();
+        }
     }
 }

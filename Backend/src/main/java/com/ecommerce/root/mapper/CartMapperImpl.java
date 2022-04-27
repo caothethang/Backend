@@ -8,6 +8,12 @@ import org.springframework.stereotype.Component;
 public class CartMapperImpl implements CartMapper{
     @Override
     public CartResponse toResponse(CartItem cartItem) {
-        return null;
+        return CartResponse.builder()
+                .cartItemId(cartItem.getId())
+                .productImage(cartItem.getImage())
+                .productName(cartItem.getProductName())
+                .quantity(cartItem.getQuantity())
+                .price(cartItem.getPrice())
+                .build();
     }
 }

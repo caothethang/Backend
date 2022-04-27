@@ -14,6 +14,7 @@ import com.ecommerce.root.request.BuyProductRequest;
 import com.ecommerce.root.request.OrderDetailRequest;
 import com.ecommerce.root.request.OrderHistoryRequest;
 import com.ecommerce.root.response.BaseResponse;
+import com.ecommerce.root.response.OrderDetailListResponse;
 import com.ecommerce.root.response.OrderHistoryResponse;
 import com.ecommerce.root.response.OrderResponse;
 import com.ecommerce.root.services.OrderService;
@@ -33,16 +34,16 @@ import java.util.Optional;
 @Slf4j
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
-    
+
     private final ProductRepository productRepository;
     private final CustomerInforRepository customerInforRepository;
     private final OrderRepository orderRepository;
     private final OrderDetailRepository orderDetailRepository;
     private final OrderMapper orderMapper;
-    
+
     @Override
     public Object buyProduct(BuyProductRequest request) {
-        
+
         CustomerInfo customerInfo = CustomerInfo.builder()
                 .fullName(request.getFullName())
                 .email(request.getEmail())
@@ -75,17 +76,17 @@ public class OrderServiceImpl implements OrderService {
                         .orders(orders)
                         .build();
                 orderDetailRepository.save(orderDetails);
-            }else {
+            } else {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Không tìm thấy sản phẩm !");
             }
         }
         return ResponseEntity.status(HttpStatus.OK).body("Mua hàng thành công");
     }
-    
+
     @Override
     public Object getOrderHistory(OrderHistoryRequest request) {
         String email = request.getEmail();
-        if (Objects.isNull(email)){
+        if (Objects.isNull(email)) {
             return BaseResponse.builder()
                     .data("Không tìm thấy email")
                     .status(500)
@@ -96,7 +97,7 @@ public class OrderServiceImpl implements OrderService {
         customerInfos.forEach(customerInfo -> {
             List<Orders> ordersList = customerInfo.getOrders();
             ordersList.forEach(orders -> {
-                    orderResponseList.add(orderMapper.toResponse(orders));
+                orderResponseList.add(orderMapper.toResponse(orders));
             });
         });
         return BaseResponse.builder()
@@ -109,12 +110,55 @@ public class OrderServiceImpl implements OrderService {
     public Object getListOrderRequest() {
         List<Orders> ordersList = orderRepository.findAll();
         List<OrderResponse> orderResponseList = new ArrayList<>();
-        for (Orders orders : ordersList){
+        for (Orders orders : ordersList) {
             orderResponseList.add(orderMapper.toResponse(orders));
         }
         return BaseResponse.builder()
                 .status(200)
                 .data(orderResponseList)
+                .build();
+    }
+
+//    public Object getOrderRequestDetail(Long orderId){
+//        Optional<Orders> optionalOrders = orderRepository.findById(orderId);
+//        List<OrderDetailListResponse> orderDetailListResponses = new ArrayList<>();
+//        if (optionalOrders.isPresent()){
+//            Orders orders = optionalOrders.get();
+//            List<OrderDetails> orderDetailsList = orders.getOrderDetails();
+//            for (OrderDetails e: orderDetailsList) {
+//
+//            }
+//        }
+//    }
+
+    @Override
+    public Object approveOrder(Long orderId, Integer status) {
+        Optional<Orders> optionalOrders = orderRepository.findById(orderId);
+        if (optionalOrders.isPresent()) {
+            if (status == 0) {
+                Orders orders = optionalOrders.get();
+                orders.setStatus(OrderStatus.REJECTED.getCode());
+                orders.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+                orderRepository.save(orders);
+                return BaseResponse.builder()
+                        .status(200)
+                        .data("Từ chối đơn hàng thành công")
+                        .build();
+            }
+            if (status == 1) {
+                Orders orders = optionalOrders.get();
+                orders.setStatus(OrderStatus.APPROVED.getCode());
+                orders.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+                orderRepository.save(orders);
+                return BaseResponse.builder()
+                        .status(200)
+                        .data("Duyệt đơn hàng thành công")
+                        .build();
+            }
+        }
+        return BaseResponse.builder()
+                .status(500)
+                .data("Không tìm thấy orders")
                 .build();
     }
 }

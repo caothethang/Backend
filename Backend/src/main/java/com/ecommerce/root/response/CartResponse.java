@@ -1,9 +1,11 @@
 package com.ecommerce.root.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class CartResponse {
 
     @JsonProperty("id")
@@ -16,7 +18,7 @@ public class CartResponse {
     private String productName;
 
     @JsonProperty("quantity")
-    private Long quantity;
+    private Integer quantity;
 
     @JsonProperty("price")
     private Long price;

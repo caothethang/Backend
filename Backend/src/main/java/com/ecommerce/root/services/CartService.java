@@ -8,4 +8,6 @@ public interface CartService {
     BaseResponse addToCart(AddToCartRequest request);
 
     Object getCart(Long userId);
+
+    Object removeCartItem(Long cartItemId);
 }

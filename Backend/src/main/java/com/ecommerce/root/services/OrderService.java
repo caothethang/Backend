@@ -14,4 +14,6 @@ public interface OrderService {
     Object getOrderHistory(OrderHistoryRequest request);
 
     Object getListOrderRequest();
+
+    Object approveOrder(Long orderId,Integer status);
 }
