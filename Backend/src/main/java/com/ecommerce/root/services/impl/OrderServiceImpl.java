@@ -5,6 +5,7 @@ import com.ecommerce.root.entity.CustomerInfo;
 import com.ecommerce.root.entity.OrderDetails;
 import com.ecommerce.root.entity.Orders;
 import com.ecommerce.root.entity.Product;
+import com.ecommerce.root.mapper.OrderDetailMapper;
 import com.ecommerce.root.mapper.OrderMapper;
 import com.ecommerce.root.repositories.CustomerInforRepository;
 import com.ecommerce.root.repositories.OrderDetailRepository;
@@ -40,6 +41,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final OrderDetailRepository orderDetailRepository;
     private final OrderMapper orderMapper;
+    private final OrderDetailMapper orderDetailMapper;
 
     @Override
     public Object buyProduct(BuyProductRequest request) {
@@ -119,17 +121,29 @@ public class OrderServiceImpl implements OrderService {
                 .build();
     }
 
-//    public Object getOrderRequestDetail(Long orderId){
-//        Optional<Orders> optionalOrders = orderRepository.findById(orderId);
-//        List<OrderDetailListResponse> orderDetailListResponses = new ArrayList<>();
-//        if (optionalOrders.isPresent()){
-//            Orders orders = optionalOrders.get();
-//            List<OrderDetails> orderDetailsList = orders.getOrderDetails();
-//            for (OrderDetails e: orderDetailsList) {
-//
-//            }
-//        }
-//    }
+    @Override
+    public Object getOrderDetail(Long orderId){
+        try {
+            Optional<Orders> optionalOrders = orderRepository.findById(orderId);
+            List<OrderDetailListResponse> orderDetailListResponses = new ArrayList<>();
+            if (optionalOrders.isPresent()){
+                Orders orders = optionalOrders.get();
+                List<OrderDetails> orderDetailsList = orders.getOrderDetails();
+                for (OrderDetails e: orderDetailsList) {
+                    orderDetailListResponses.add(orderDetailMapper.toResponse(e));
+                }
+            }
+            return BaseResponse.builder()
+                    .status(200)
+                    .data(orderDetailListResponses)
+                    .build();
+        } catch (Exception e) {
+            return BaseResponse.builder()
+                    .status(500)
+                    .data("Không thể view detail")
+                    .build();
+        }
+    }
 
     @Override
     public Object approveOrder(Long orderId, Integer status) {

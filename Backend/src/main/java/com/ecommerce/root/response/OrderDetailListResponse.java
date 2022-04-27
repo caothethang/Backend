@@ -8,6 +8,15 @@ import lombok.Data;
 @Builder
 public class OrderDetailListResponse {
 
+    @JsonProperty("id")
+    private Long id;
+
+    @JsonProperty("product_name")
+    private String productName;
+
+    @JsonProperty("category_name")
+    private String categoryName;
+
     @JsonProperty("quantity")
     private Long quantity;
     @JsonProperty("size")

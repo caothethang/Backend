@@ -27,6 +27,6 @@ public class CustomerInfo extends BaseEntity {
     @Column(name = "phone")
     private String phone;
     
-    @OneToMany(mappedBy = "customerInfo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customerInfo", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Orders> orders;
 }

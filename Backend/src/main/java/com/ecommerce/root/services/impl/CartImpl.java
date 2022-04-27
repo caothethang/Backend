@@ -51,9 +51,10 @@ public class CartImpl implements CartService {
                     .build();
         }
         Cart cart = cartRepository.findByUserId(request.getUserId());
+
         Product product = optionalProduct.get();
         if (Objects.nonNull(cart)){
-            List<CartItem> cartItems = cartItemRepository.findAllByCart(cart);
+            List<CartItem> cartItems = cart.getCartItems();
             for (CartItem e : cartItems){
                 if (e.getId() == request.getProductId()){
                     return BaseResponse.builder()

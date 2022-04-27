@@ -16,4 +16,6 @@ public interface OrderService {
     Object getListOrderRequest();
 
     Object approveOrder(Long orderId,Integer status);
+
+    Object getOrderDetail(Long orderId);
 }

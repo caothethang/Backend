@@ -21,6 +21,6 @@ public class Cart extends BaseEntity{
     @OneToOne
     private User user;
     
-    @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<CartItem> cartItems;
 }

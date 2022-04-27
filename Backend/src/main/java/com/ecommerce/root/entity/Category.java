@@ -20,7 +20,7 @@ public class Category extends BaseEntity{
     @Column(name = "name", nullable = false)
     private String name;
     
-    @OneToMany(mappedBy = "category",fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<Product> products;
     

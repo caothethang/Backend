@@ -33,7 +33,7 @@ public class Orders extends BaseEntity{
     @ToString.Exclude
     private CustomerInfo customerInfo;
     
-    @OneToMany(mappedBy = "orders",fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "orders",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetails> orderDetails;
 
 }
