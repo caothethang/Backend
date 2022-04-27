@@ -10,6 +10,7 @@ public class CartMapperImpl implements CartMapper{
     public CartResponse toResponse(CartItem cartItem) {
         return CartResponse.builder()
                 .cartItemId(cartItem.getId())
+                .categoryName(cartItem.getCategoryName())
                 .productImage(cartItem.getImage())
                 .productName(cartItem.getProductName())
                 .quantity(cartItem.getQuantity())

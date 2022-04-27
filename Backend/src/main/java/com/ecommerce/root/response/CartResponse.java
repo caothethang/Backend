@@ -11,6 +11,9 @@ public class CartResponse {
     @JsonProperty("id")
     private Long cartItemId;
 
+    @JsonProperty("category_name")
+    private String categoryName;
+
     @JsonProperty("product_image")
     private String productImage;
 
