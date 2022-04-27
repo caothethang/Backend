@@ -13,7 +13,7 @@ public class OrderDetailRequest {
     @JsonProperty("total_price")
     private Long totalPrice;
     @JsonProperty("size")
-    private Integer size;
+    private String size;
     @JsonProperty("gender")
     private Integer gender;
 }

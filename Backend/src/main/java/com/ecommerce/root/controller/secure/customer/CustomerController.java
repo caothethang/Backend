@@ -1,7 +1,9 @@
 package com.ecommerce.root.controller.secure.customer;
 
+import com.ecommerce.root.request.AddToCartRequest;
 import com.ecommerce.root.request.BuyProductRequest;
 import com.ecommerce.root.request.OrderHistoryRequest;
+import com.ecommerce.root.services.CartService;
 import com.ecommerce.root.services.OrderService;
 import com.ecommerce.root.services.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +22,21 @@ public class CustomerController {
     
     private final OrderService orderService;
     private final ProductService productService;
+    private final CartService cartService;
     
+    @PostMapping("/add-to-cart")
+    public ResponseEntity<?> addToCart(
+            @RequestBody AddToCartRequest addToCartRequest
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(cartService.addToCart(addToCartRequest));
+    }
+    
+    @GetMapping("/cart")
+    public ResponseEntity<?> getCart(
+            @RequestParam(value = "id") Long userId
+    ){
+        return null;
+    }
     
     @PostMapping("/buy")
     public ResponseEntity<?> buyProduct(@RequestBody BuyProductRequest buyProductRequest){

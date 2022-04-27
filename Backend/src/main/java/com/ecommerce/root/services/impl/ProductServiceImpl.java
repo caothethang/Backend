@@ -48,6 +48,7 @@ public class ProductServiceImpl implements ProductService {
                 .hasFreeShipping(request.getHasFreeShipping())
                 .description(request.getDescription())
                 .size(size)
+                .color(request.getColor())
                 .category(optionalCategory.get())
                 .createdAt(new Timestamp(System.currentTimeMillis()))
                 .build();

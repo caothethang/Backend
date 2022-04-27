@@ -28,4 +28,6 @@ public class CreateProductRequest {
     
     private List<String> size;
     
+    private String color;
+    
 }

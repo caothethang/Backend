@@ -47,7 +47,7 @@ public class OrderServiceImpl implements OrderService {
                 .build();
         customerInfo = customerInforRepository.save(customerInfo);
         Orders orders = Orders.builder()
-                .receivedAddress(request.getReceivedAddress())
+                .receivedAddress(request.getAddress())
                 .status(OrderStatus.WAITING.getCode())
                 .customerInfo(customerInfo)
                 .build();
@@ -62,7 +62,6 @@ public class OrderServiceImpl implements OrderService {
                         .product(product)
                         .size(orderDetailRequest.getSize())
                         .quantity(orderDetailRequest.getQuantity())
-                        .gender(orderDetailRequest.getGender())
                         .orders(orders)
                         .build();
                 orderDetailRepository.save(orderDetails);
@@ -84,15 +83,17 @@ public class OrderServiceImpl implements OrderService {
                 List<OrderDetails> orderDetails= orders.getOrderDetails();
                 orderDetails.forEach(orderDetail ->{
                     OrderHistoryResponse orderHistoryResponse = OrderHistoryResponse.builder()
+                            .productName(orderDetail.getProduct().getName())
                             .productImage(orderDetail.getProduct().getImage())
-                            .gender(orderDetail.getGender())
                             .quantity(orderDetail.getQuantity())
+                            .totalPrice(orderDetail.getPrice())
                             .size(orderDetail.getSize())
                             .build();
+                    orderHistoryResponses.add(orderHistoryResponse);
                 });
                 
             });
         });
-        return null;
+        return orderHistoryResponses;
     }
 }

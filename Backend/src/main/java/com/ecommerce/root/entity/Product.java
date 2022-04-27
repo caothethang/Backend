@@ -37,6 +37,9 @@ public class Product extends BaseEntity{
     @Column(name = "size")
     private String size;
     
+    @Column(name = "color")
+    private String color;
+    
     @Column(name = "has_free_shipping")
     private boolean hasFreeShipping;
     

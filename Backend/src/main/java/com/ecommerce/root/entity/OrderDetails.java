@@ -20,9 +20,10 @@ public class OrderDetails extends BaseEntity{
     @Column(name = "quantity")
     private Long quantity;
     @Column(name = "size")
-    private Integer size;
-    @Column(name = "gender")
-    private Integer gender;
+    private String size;
+    
+    @Column(name = "price")
+    private Long price;
     
     @ManyToOne
     @JoinColumn(name = "product_id")

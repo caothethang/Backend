@@ -3,6 +3,7 @@ package com.ecommerce.root.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamicUpdate
+@SuperBuilder(toBuilder = true)
 public class CartItem extends BaseEntity{
     
     @ManyToOne
@@ -27,5 +29,9 @@ public class CartItem extends BaseEntity{
     @Column(name = "price")
     private Long price;
     
+    @Column(name = "status")
+    private Integer status;
     
+    @Column(name = "is_deleted")
+    private Boolean isDeleted;
 }

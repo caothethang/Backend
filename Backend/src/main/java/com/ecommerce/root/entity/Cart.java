@@ -5,10 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "cart")
@@ -18,9 +16,9 @@ import javax.persistence.Table;
 @DynamicUpdate
 public class Cart extends BaseEntity{
 
-    @ManyToOne
+    @OneToOne
     private User user;
     
-    @Column(name = "price")
-    private Long price;
+    @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<CartItem> cartItems;
 }

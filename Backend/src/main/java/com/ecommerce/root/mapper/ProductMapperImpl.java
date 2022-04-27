@@ -33,6 +33,7 @@ public class ProductMapperImpl implements ProductMapper{
                 .categoryName(product.getCategory().getName())
                 .hasFreeShipping(product.isHasFreeShipping())
                 .rate(product.getRate())
+                .color(product.getColor())
                 .build();
     }
 }

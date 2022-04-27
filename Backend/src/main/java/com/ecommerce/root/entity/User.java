@@ -38,4 +38,7 @@ public class User extends BaseEntity {
                     @JoinColumn(name = "role_id") })
     private Set<Role> roles;
     
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Cart cart;
+    
 }

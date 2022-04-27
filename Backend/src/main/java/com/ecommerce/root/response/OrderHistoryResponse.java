@@ -12,8 +12,7 @@ public class OrderHistoryResponse {
     @JsonProperty("product_image")
     private String productImage;
     private Long quantity;
-    private Integer size;
-    private Integer gender;
+    private String size;
     @JsonProperty("received_address")
     private String receivedAddress;
     @JsonProperty("total_price")

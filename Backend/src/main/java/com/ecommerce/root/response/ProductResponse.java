@@ -24,4 +24,5 @@ public class ProductResponse {
     private Boolean hasFreeShipping;
     private List<String> size;
     private Integer rate;
+    private String color;
 }
