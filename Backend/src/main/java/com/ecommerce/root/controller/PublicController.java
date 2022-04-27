@@ -4,12 +4,15 @@ import com.ecommerce.root.entity.Category;
 import com.ecommerce.root.repositories.CategoryRepository;
 import com.ecommerce.root.response.CategoryResponse;
 import com.ecommerce.root.services.CategoryService;
+import com.ecommerce.root.services.ImageService;
 import com.ecommerce.root.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -22,6 +25,7 @@ public class PublicController {
     private final CategoryRepository categoryRepository;
     private final ProductService productService;
     private final CategoryService categoryService;
+    private final ImageService imageService;
     
     @GetMapping("/category")
     public List<CategoryResponse> getListCategory(){
@@ -54,5 +58,11 @@ public class PublicController {
             @RequestParam(value = "id") Long productId
     ){
         return ResponseEntity.status(HttpStatus.OK).body(productService.getProductDetail(productId));
+    }
+
+    @PostMapping("/upload")
+    public ResponseEntity<?> uploadImage(@RequestParam("files")MultipartFile file) throws IOException {
+        String url = (String) imageService.uploadImage(file).get("url");
+        return ResponseEntity.status(HttpStatus.OK).body(url);
     }
 }
