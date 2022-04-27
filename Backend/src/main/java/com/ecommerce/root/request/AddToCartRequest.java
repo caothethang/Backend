@@ -17,10 +17,6 @@ public class AddToCartRequest {
     
     @JsonProperty("price")
     private Long price;
-    
-    
-    
-    
-    
+
     
 }

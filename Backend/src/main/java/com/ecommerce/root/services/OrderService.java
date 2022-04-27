@@ -11,5 +11,7 @@ public interface OrderService {
     
     Object buyProduct(BuyProductRequest request);
     
-    List<OrderHistoryResponse> getOrderHistory(OrderHistoryRequest request);
+    Object getOrderHistory(OrderHistoryRequest request);
+
+    Object getListOrderRequest();
 }

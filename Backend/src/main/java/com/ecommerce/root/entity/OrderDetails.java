@@ -24,6 +24,9 @@ public class OrderDetails extends BaseEntity{
     
     @Column(name = "price")
     private Long price;
+
+    @Column(name = "color")
+    private String color;
     
     @ManyToOne
     @JoinColumn(name = "product_id")

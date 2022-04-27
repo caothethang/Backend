@@ -139,6 +139,7 @@ public class ProductServiceImpl implements ProductService {
             product.setPrice(request.getPrice());
             product.setQuantity(request.getQuantity());
             product.setCategory(optionalCategory.get());
+            product.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
             product = productRepository.save(product);
             return productMapper.toProductResponse(product);
         }

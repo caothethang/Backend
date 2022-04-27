@@ -8,6 +8,7 @@ import com.ecommerce.root.request.UpdateProductRequest;
 import com.ecommerce.root.response.BaseResponse;
 import com.ecommerce.root.services.AdminService;
 import com.ecommerce.root.services.CategoryService;
+import com.ecommerce.root.services.OrderService;
 import com.ecommerce.root.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,6 @@ import javax.validation.Valid;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/admin")
-//@PreAuthorize("hasRole('ADMIN')")
 @RequiredArgsConstructor
 public class AdminController {
     
@@ -29,6 +29,7 @@ public class AdminController {
     private final UserRepository userRepository;
     private final AdminService adminService;
     private final CategoryRepository categoryRepository;
+    private final OrderService orderService;
     
     @GetMapping("/users")
     public ResponseEntity<?> getListUser() {
@@ -99,6 +100,11 @@ public class AdminController {
                     .status(500)
                     .build());
         }
+    }
+
+    @GetMapping("/order")
+    public ResponseEntity<?> getListOrder(){
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.getListOrderRequest());
     }
     
 }

@@ -19,7 +19,10 @@ public class CartItem extends BaseEntity{
     
     @ManyToOne
     private Cart cart;
-    
+
+    @Column(name = "product_image")
+    private String image;
+
     @Column(name = "product_name")
     private String productName;
     

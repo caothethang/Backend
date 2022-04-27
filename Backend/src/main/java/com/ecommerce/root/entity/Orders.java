@@ -20,10 +20,13 @@ import java.util.List;
 @SuperBuilder(toBuilder = true)
 public class Orders extends BaseEntity{
 
-    @JsonProperty("received_address")
+    @Column(name ="received_address")
     private String receivedAddress;
-    @JsonProperty("status")
+    @Column(name ="status")
     private Integer status;
+
+    @Column(name = "total_price")
+    private Long totalPrice;
     
     @ManyToOne
     @JoinColumn(name = "customer_infor_id")

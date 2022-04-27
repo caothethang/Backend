@@ -35,7 +35,7 @@ public class CustomerController {
     public ResponseEntity<?> getCart(
             @RequestParam(value = "id") Long userId
     ){
-        return null;
+        return ResponseEntity.status(HttpStatus.OK).body(cartService.getCart(userId));
     }
     
     @PostMapping("/buy")
@@ -58,8 +58,7 @@ public class CustomerController {
     
     // xem lịch sử mua hàng
     @GetMapping("/order/history")
-    @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> getOrderHistory(HttpServletRequest servletRequest,
+    public ResponseEntity<?> getOrderHistory(
             @RequestBody OrderHistoryRequest orderHistoryRequest
     ){
         return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrderHistory(orderHistoryRequest));

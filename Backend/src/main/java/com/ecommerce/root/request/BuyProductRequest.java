@@ -16,6 +16,9 @@ public class BuyProductRequest {
     private String email;
     @JsonProperty("phone")
     private String phone;
+
+    @JsonProperty("total_price")
+    private Long totalPrice;
     
     @JsonProperty("list_order_details")
     private List<OrderDetailRequest> orderDetailRequests;

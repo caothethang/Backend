@@ -4,18 +4,22 @@ import com.ecommerce.root.entity.Cart;
 import com.ecommerce.root.entity.CartItem;
 import com.ecommerce.root.entity.Product;
 import com.ecommerce.root.entity.User;
+import com.ecommerce.root.mapper.CartMapper;
+import com.ecommerce.root.repositories.CartItemRepository;
 import com.ecommerce.root.repositories.CartRepository;
 import com.ecommerce.root.repositories.ProductRepository;
 import com.ecommerce.root.repositories.UserRepository;
 import com.ecommerce.root.request.AddToCartRequest;
 import com.ecommerce.root.response.BaseResponse;
+import com.ecommerce.root.response.CartResponse;
 import com.ecommerce.root.services.CartService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -27,9 +31,18 @@ public class CartImpl implements CartService {
     private final CartRepository cartRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final CartItemRepository cartItemRepository;
+    private final CartMapper cartMapper;
     
     @Override
     public BaseResponse addToCart(AddToCartRequest request) {
+        Optional<User> optionalUser = userRepository.findById(request.getUserId());
+        if (!optionalUser.isPresent()) {
+            return BaseResponse.builder()
+                    .status(503)
+                    .data("Không có user")
+                    .build();
+        }
         Optional<Product> optionalProduct = productRepository.findById(request.getProductId());
         if (!optionalProduct.isPresent()){
             return BaseResponse.builder()
@@ -38,24 +51,62 @@ public class CartImpl implements CartService {
                     .build();
         }
         Cart cart = cartRepository.findByUserId(request.getUserId());
+        Product product = optionalProduct.get();
         if (Objects.nonNull(cart)){
             CartItem cartItem = CartItem.builder()
                     .cart(cart)
                     .price(request.getPrice())
                     .quantity(request.getQuantity())
-                    .productName(optionalProduct.get().getName())
+                    .productName(product.getName())
+                    .image(product.getImage())
                     .createdAt(new Timestamp(System.currentTimeMillis()))
                     .build();
+            cartItemRepository.save(cartItem);
+        }else {
+            cart = Cart.builder()
+                    .user(optionalUser.get())
+                    .createdAt(new Timestamp(System.currentTimeMillis()))
+                    .build();
+            cart = cartRepository.save(cart);
+
+            CartItem cartItem = CartItem.builder()
+                    .productName(product.getName())
+                    .quantity(request.getQuantity())
+                    .cart(cart)
+                    .image(product.getImage())
+                    .price(request.getPrice())
+                    .createdAt(new Timestamp(System.currentTimeMillis()))
+                    .build();
+            cartItemRepository.save(cartItem);
         }
+
+        return BaseResponse.builder()
+                .status(200)
+                .data("Thêm vào giỏ hàng thành công")
+                .build();
         
-        Optional<User> optionalUser = userRepository.findById(request.getUserId());
+    }
+
+    public Object getCart(Long userId){
+        Optional<User> optionalUser = userRepository.findById(userId);
+        List<CartResponse> listCartResponse = new ArrayList<>();
         if (!optionalUser.isPresent()) {
             return BaseResponse.builder()
                     .status(503)
                     .data("Không có user")
                     .build();
+        }else {
+            Cart cart = cartRepository.findByUserId(userId);
+            if (Objects.nonNull(cart)){
+                List<CartItem> cartItems = cart.getCartItems();
+                for (CartItem e : cartItems){
+                    listCartResponse.add(cartMapper.toResponse(e));
+                }
+            }
         }
-        return null;
-        
+        return BaseResponse.builder()
+                .data(listCartResponse)
+                .status(200)
+                .build();
     }
 }

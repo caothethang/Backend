@@ -5,6 +5,7 @@ import com.ecommerce.root.entity.CustomerInfo;
 import com.ecommerce.root.entity.OrderDetails;
 import com.ecommerce.root.entity.Orders;
 import com.ecommerce.root.entity.Product;
+import com.ecommerce.root.mapper.OrderMapper;
 import com.ecommerce.root.repositories.CustomerInforRepository;
 import com.ecommerce.root.repositories.OrderDetailRepository;
 import com.ecommerce.root.repositories.OrderRepository;
@@ -12,7 +13,9 @@ import com.ecommerce.root.repositories.ProductRepository;
 import com.ecommerce.root.request.BuyProductRequest;
 import com.ecommerce.root.request.OrderDetailRequest;
 import com.ecommerce.root.request.OrderHistoryRequest;
+import com.ecommerce.root.response.BaseResponse;
 import com.ecommerce.root.response.OrderHistoryResponse;
+import com.ecommerce.root.response.OrderResponse;
 import com.ecommerce.root.services.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +26,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -34,6 +38,7 @@ public class OrderServiceImpl implements OrderService {
     private final CustomerInforRepository customerInforRepository;
     private final OrderRepository orderRepository;
     private final OrderDetailRepository orderDetailRepository;
+    private final OrderMapper orderMapper;
     
     @Override
     public Object buyProduct(BuyProductRequest request) {
@@ -49,6 +54,8 @@ public class OrderServiceImpl implements OrderService {
         Orders orders = Orders.builder()
                 .receivedAddress(request.getAddress())
                 .status(OrderStatus.WAITING.getCode())
+                .totalPrice(request.getTotalPrice())
+                .createdAt(new Timestamp(System.currentTimeMillis()))
                 .customerInfo(customerInfo)
                 .build();
         orders = orderRepository.save(orders);
@@ -61,7 +68,10 @@ public class OrderServiceImpl implements OrderService {
                 OrderDetails orderDetails = OrderDetails.builder()
                         .product(product)
                         .size(orderDetailRequest.getSize())
+                        .color(orderDetailRequest.getColor())
+                        .price(orderDetailRequest.getPrice())
                         .quantity(orderDetailRequest.getQuantity())
+                        .createdAt(new Timestamp(System.currentTimeMillis()))
                         .orders(orders)
                         .build();
                 orderDetailRepository.save(orderDetails);
@@ -73,27 +83,38 @@ public class OrderServiceImpl implements OrderService {
     }
     
     @Override
-    public List<OrderHistoryResponse> getOrderHistory(OrderHistoryRequest request) {
+    public Object getOrderHistory(OrderHistoryRequest request) {
         String email = request.getEmail();
+        if (Objects.isNull(email)){
+            return BaseResponse.builder()
+                    .data("Không tìm thấy email")
+                    .status(500)
+                    .build();
+        }
         List<CustomerInfo> customerInfos = customerInforRepository.findAllByEmail(email);
-        List<OrderHistoryResponse> orderHistoryResponses = new ArrayList<>();
+        List<OrderResponse> orderResponseList = new ArrayList<>();
         customerInfos.forEach(customerInfo -> {
             List<Orders> ordersList = customerInfo.getOrders();
             ordersList.forEach(orders -> {
-                List<OrderDetails> orderDetails= orders.getOrderDetails();
-                orderDetails.forEach(orderDetail ->{
-                    OrderHistoryResponse orderHistoryResponse = OrderHistoryResponse.builder()
-                            .productName(orderDetail.getProduct().getName())
-                            .productImage(orderDetail.getProduct().getImage())
-                            .quantity(orderDetail.getQuantity())
-                            .totalPrice(orderDetail.getPrice())
-                            .size(orderDetail.getSize())
-                            .build();
-                    orderHistoryResponses.add(orderHistoryResponse);
-                });
-                
+                    orderResponseList.add(orderMapper.toResponse(orders));
             });
         });
-        return orderHistoryResponses;
+        return BaseResponse.builder()
+                .status(200)
+                .data(orderResponseList)
+                .build();
+    }
+
+    @Override
+    public Object getListOrderRequest() {
+        List<Orders> ordersList = orderRepository.findAll();
+        List<OrderResponse> orderResponseList = new ArrayList<>();
+        for (Orders orders : ordersList){
+            orderResponseList.add(orderMapper.toResponse(orders));
+        }
+        return BaseResponse.builder()
+                .status(200)
+                .data(orderResponseList)
+                .build();
     }
 }
