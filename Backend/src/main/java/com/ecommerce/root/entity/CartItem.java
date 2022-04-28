@@ -26,6 +26,9 @@ public class CartItem extends BaseEntity{
     @Column(name = "product_image")
     private String image;
 
+    @Column(name = "product_id")
+    private Long productId;
+
     @Column(name = "product_name")
     private String productName;
     

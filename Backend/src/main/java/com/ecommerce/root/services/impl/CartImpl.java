@@ -10,6 +10,7 @@ import com.ecommerce.root.repositories.CartRepository;
 import com.ecommerce.root.repositories.ProductRepository;
 import com.ecommerce.root.repositories.UserRepository;
 import com.ecommerce.root.request.AddToCartRequest;
+import com.ecommerce.root.request.UpdateCartRequest;
 import com.ecommerce.root.response.BaseResponse;
 import com.ecommerce.root.response.CartResponse;
 import com.ecommerce.root.services.CartService;
@@ -56,7 +57,7 @@ public class CartImpl implements CartService {
         if (Objects.nonNull(cart)){
             List<CartItem> cartItems = cart.getCartItems();
             for (CartItem e : cartItems){
-                if (e.getId() == request.getProductId()){
+                if (e.getProductId() == request.getProductId()){
                     return BaseResponse.builder()
                             .status(501)
                             .data("Đã tồn tại trong giỏ hàng")
@@ -69,6 +70,7 @@ public class CartImpl implements CartService {
                     .price(request.getPrice())
                     .categoryName(product.getCategory().getName())
                     .quantity(request.getQuantity())
+                    .productId(product.getId())
                     .productName(product.getName())
                     .image(product.getImage())
                     .createdAt(new Timestamp(System.currentTimeMillis()))
@@ -82,6 +84,7 @@ public class CartImpl implements CartService {
             cart = cartRepository.save(cart);
 
             CartItem cartItem = CartItem.builder()
+                    .productId(product.getId())
                     .productName(product.getName())
                     .quantity(request.getQuantity())
                     .cart(cart)
@@ -136,5 +139,21 @@ public class CartImpl implements CartService {
                     .data("Xóa không thành công")
                     .build();
         }
+    }
+
+    @Override
+    public Object updateCart(List<UpdateCartRequest> updateCartRequest) {
+        List<CartItem> cartItems = new ArrayList<>();
+        updateCartRequest.forEach(request ->{
+            Long cartItemId = request.getCartItemId();
+            CartItem cartItem = cartItemRepository.getById(cartItemId);
+            cartItem.setQuantity(request.getQuantity());
+            cartItems.add(cartItem);
+        });
+        cartItemRepository.saveAll(cartItems);
+        return BaseResponse.builder()
+                .data("Update thành công")
+                .status(200)
+                .build();
     }
 }

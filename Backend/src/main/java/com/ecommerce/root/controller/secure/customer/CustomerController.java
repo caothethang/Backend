@@ -3,6 +3,7 @@ package com.ecommerce.root.controller.secure.customer;
 import com.ecommerce.root.request.AddToCartRequest;
 import com.ecommerce.root.request.BuyProductRequest;
 import com.ecommerce.root.request.OrderHistoryRequest;
+import com.ecommerce.root.request.UpdateCartRequest;
 import com.ecommerce.root.services.CartService;
 import com.ecommerce.root.services.OrderService;
 import com.ecommerce.root.services.ProductService;
@@ -13,6 +14,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
@@ -36,6 +38,13 @@ public class CustomerController {
             @RequestParam(value = "id") Long userId
     ){
         return ResponseEntity.status(HttpStatus.OK).body(cartService.getCart(userId));
+    }
+
+    @PostMapping("/cart/update")
+    public ResponseEntity<?> updateCart(
+            @RequestBody List<UpdateCartRequest> updateCartRequest
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(cartService.updateCart(updateCartRequest));
     }
 
     @PostMapping("/cart/remove")
