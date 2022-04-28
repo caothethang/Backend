@@ -114,7 +114,7 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrderDetail(orderId));
     }
 
-    @PostMapping("/order/approve")
+    @PostMapping("/order/action")
     public ResponseEntity<?> approveOrder(
             @RequestParam("id") Long orderId,
             @RequestParam("status") Integer status
