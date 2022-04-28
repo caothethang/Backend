@@ -63,7 +63,6 @@ public class AdminController {
     public ResponseEntity<?> deleteProduct(
             @RequestParam(value = "id") Long id
     ) {
-        productService.deleteProduct(id);
         try {
             productService.deleteProduct(id);
             return ResponseEntity.ok(BaseResponse.builder()
