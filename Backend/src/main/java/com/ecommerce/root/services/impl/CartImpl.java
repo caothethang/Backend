@@ -73,6 +73,7 @@ public class CartImpl implements CartService {
                     .productId(product.getId())
                     .productName(product.getName())
                     .image(product.getImage())
+                    .size(request.getSize())
                     .createdAt(new Timestamp(System.currentTimeMillis()))
                     .build();
             cartItemRepository.save(cartItem);
@@ -88,6 +89,7 @@ public class CartImpl implements CartService {
                     .productName(product.getName())
                     .quantity(request.getQuantity())
                     .cart(cart)
+                    .size(request.getSize())
                     .image(product.getImage())
                     .price(request.getPrice())
                     .createdAt(new Timestamp(System.currentTimeMillis()))

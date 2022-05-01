@@ -25,5 +25,7 @@ public class CartResponse {
 
     @JsonProperty("price")
     private Long price;
+    
+    private String size;
 
 }

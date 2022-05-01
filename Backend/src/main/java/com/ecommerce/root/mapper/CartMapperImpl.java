@@ -14,6 +14,7 @@ public class CartMapperImpl implements CartMapper{
                 .productImage(cartItem.getImage())
                 .productName(cartItem.getProductName())
                 .quantity(cartItem.getQuantity())
+                .size(cartItem.getSize())
                 .price(cartItem.getPrice())
                 .build();
     }

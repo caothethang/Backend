@@ -14,8 +14,6 @@ public class OrderDetailRequest {
     private Long totalPrice;
     @JsonProperty("size")
     private String size;
-    @JsonProperty("gender")
-    private Integer gender;
     private Long price;
     private String color;
 }
