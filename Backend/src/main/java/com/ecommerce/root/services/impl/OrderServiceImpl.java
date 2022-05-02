@@ -55,6 +55,7 @@ public class OrderServiceImpl implements OrderService {
                 .build();
         customerInfo = customerInforRepository.save(customerInfo);
         Orders orders = Orders.builder()
+                .userName(request.getUserName())
                 .receivedAddress(request.getAddress())
                 .status(OrderStatus.WAITING.getCode())
                 .totalPrice(request.getTotalPrice())
@@ -128,14 +129,20 @@ public class OrderServiceImpl implements OrderService {
             List<OrderDetailListResponse> orderDetailListResponses = new ArrayList<>();
             if (optionalOrders.isPresent()){
                 Orders orders = optionalOrders.get();
-                List<OrderDetails> orderDetailsList = orders.getOrderDetails();
+                List<OrderDetails> orderDetailsList = orderDetailRepository.findAllByOrders(orders);
                 for (OrderDetails e: orderDetailsList) {
                     orderDetailListResponses.add(orderDetailMapper.toResponse(e));
                 }
+                OrderResponse orderResponse = orderMapper.toResponse(orders);
+                orderResponse.setOrderDetailListResponseList(orderDetailListResponses);
+                return BaseResponse.builder()
+                        .status(200)
+                        .data(orderResponse)
+                        .build();
             }
             return BaseResponse.builder()
-                    .status(200)
-                    .data(orderDetailListResponses)
+                    .status(500)
+                    .data("No data")
                     .build();
         } catch (Exception e) {
             return BaseResponse.builder()

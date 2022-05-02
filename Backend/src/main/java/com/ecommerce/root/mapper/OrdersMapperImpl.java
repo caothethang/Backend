@@ -2,11 +2,16 @@ package com.ecommerce.root.mapper;
 
 import com.ecommerce.root.entity.CustomerInfo;
 import com.ecommerce.root.entity.Orders;
+import com.ecommerce.root.entity.User;
+import com.ecommerce.root.repositories.UserRepository;
 import com.ecommerce.root.response.OrderResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class OrdersMapperImpl implements OrderMapper{
+    
 
     @Override
     public OrderResponse toResponse(Orders orders) {
@@ -17,6 +22,7 @@ public class OrdersMapperImpl implements OrderMapper{
                 .price(orders.getTotalPrice())
                 .address(customerInfo.getAddress())
                 .status(orders.getStatus())
+                .userName(orders.getUserName())
                 .createdAt(orders.getCreatedAt().getTime())
                 .build();
     }

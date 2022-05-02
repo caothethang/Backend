@@ -20,6 +20,9 @@ import java.util.List;
 @SuperBuilder(toBuilder = true)
 public class Orders extends BaseEntity{
 
+    @Column(name = "user_name")
+    private String userName;
+    
     @Column(name ="received_address")
     private String receivedAddress;
     @Column(name ="status")

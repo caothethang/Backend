@@ -8,6 +8,9 @@ import java.util.List;
 @Data
 public class BuyProductRequest {
     
+    @JsonProperty("user_name")
+    private String userName;
+    
     @JsonProperty("full_name")
     private String fullName;
     @JsonProperty("address")

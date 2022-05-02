@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Builder
 public class OrderResponse {
@@ -21,4 +23,7 @@ public class OrderResponse {
     private Integer status;
     @JsonProperty("created_at")
     private Long createdAt;
+    
+    @JsonProperty("list_order_product")
+    private List<OrderDetailListResponse> orderDetailListResponseList;
 }
