@@ -144,7 +144,16 @@ public class OrderServiceImpl implements OrderService {
                     .build();
         }
     }
-
+    
+    @Override
+    public Object deleteOrder(Long orderId) {
+        orderRepository.deleteById(orderId);
+        return BaseResponse.builder()
+                .status(200)
+                .data("Xoá thành công")
+                .build();
+    }
+    
     @Override
     public Object approveOrder(Long orderId, Integer status) {
         Optional<Orders> optionalOrders = orderRepository.findById(orderId);

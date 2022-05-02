@@ -18,4 +18,6 @@ public interface OrderService {
     Object approveOrder(Long orderId,Integer status);
 
     Object getOrderDetail(Long orderId);
+    
+    Object deleteOrder(Long orderId);
 }
