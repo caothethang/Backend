@@ -38,6 +38,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderDetailMapper orderDetailMapper;
     private final UserRepository userRepository;
     private final CartRepository cartRepository;
+    private final CartItemRepository cartItemRepository;
 
     @Override
     public Object buyProduct(BuyProductRequest request) {
@@ -61,7 +62,9 @@ public class OrderServiceImpl implements OrderService {
                 .build();
         orders = orderRepository.save(orders);
         User user = userRepository.findByUsername(request.getUserName());
-        cartRepository.deleteByUser(user);
+        Cart cart = cartRepository.findByUserId(user.getId());
+        List<CartItem> cartItemList = cart.getCartItems();
+        cartItemRepository.deleteAll(cartItemList);
         List<OrderDetailRequest> orderDetailRequestList = request.getOrderDetailRequests();
         for (OrderDetailRequest orderDetailRequest : orderDetailRequestList) {
             Long productId = orderDetailRequest.getProductId();
@@ -90,7 +93,7 @@ public class OrderServiceImpl implements OrderService {
         String userName = request.getUserName();
         if (Objects.isNull(userName)) {
             return BaseResponse.builder()
-                    .data("Không tìm thấy user")
+                    .data("Không tìm thấy username")
                     .status(500)
                     .build();
         }

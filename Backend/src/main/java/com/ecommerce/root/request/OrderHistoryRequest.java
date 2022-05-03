@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 public class OrderHistoryRequest {
-
     @JsonProperty("user_name")
     private String userName;
 }

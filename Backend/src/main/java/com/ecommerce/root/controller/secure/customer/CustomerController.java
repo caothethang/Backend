@@ -1,6 +1,5 @@
 package com.ecommerce.root.controller.secure.customer;
 
-import com.ecommerce.root.entity.Orders;
 import com.ecommerce.root.request.AddToCartRequest;
 import com.ecommerce.root.request.BuyProductRequest;
 import com.ecommerce.root.request.OrderHistoryRequest;
@@ -11,10 +10,8 @@ import com.ecommerce.root.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -73,7 +70,7 @@ public class CustomerController {
     }
     
     // xem lịch sử mua hàng
-    @GetMapping("/order/history")
+    @PostMapping("/order/history")
     public ResponseEntity<?> getOrderHistory(
             @RequestBody OrderHistoryRequest orderHistoryRequest
     ) {
@@ -87,5 +84,11 @@ public class CustomerController {
      return ResponseEntity.status(HttpStatus.OK).body(orderService.deleteOrder(orderId));
     }
     
+    @GetMapping("/order/detail")
+    public ResponseEntity<?> getOrderDetail(
+            @RequestParam("id") Long orderId
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrderDetail(orderId));
+    }
     
 }
