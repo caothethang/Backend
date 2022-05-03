@@ -17,4 +17,6 @@ public interface OrderRepository extends JpaRepository<Orders,Long> {
 //    @Query(value = "delete from tbl_orders where id = :id",nativeQuery = true)
 //    @Modifying
 //    void deleteById(Long id);
+
+    List<Orders> findAllByCustomerInfo(CustomerInfo customerInfo);
 }

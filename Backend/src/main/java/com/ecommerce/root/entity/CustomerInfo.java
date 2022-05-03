@@ -17,7 +17,9 @@ import java.util.List;
 @Data
 @SuperBuilder(toBuilder = true)
 public class CustomerInfo extends BaseEntity {
-    
+
+    @Column(name = "user_name")
+    private String username;
     @Column(name = "full_name")
     private String fullName;
     @Column(name = "email")

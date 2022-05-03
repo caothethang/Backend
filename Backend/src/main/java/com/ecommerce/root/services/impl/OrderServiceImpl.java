@@ -43,6 +43,7 @@ public class OrderServiceImpl implements OrderService {
     public Object buyProduct(BuyProductRequest request) {
 
         CustomerInfo customerInfo = CustomerInfo.builder()
+                .username(request.getUserName())
                 .fullName(request.getFullName())
                 .email(request.getEmail())
                 .address(request.getAddress())
@@ -86,17 +87,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Object getOrderHistory(OrderHistoryRequest request) {
-        String email = request.getEmail();
-        if (Objects.isNull(email)) {
+        String userName = request.getUserName();
+        if (Objects.isNull(userName)) {
             return BaseResponse.builder()
-                    .data("Không tìm thấy email")
+                    .data("Không tìm thấy user")
                     .status(500)
                     .build();
         }
-        List<CustomerInfo> customerInfos = customerInforRepository.findAllByEmail(email);
+        List<CustomerInfo> customerInfos = customerInforRepository.findAllByUsername(userName);
         List<OrderResponse> orderResponseList = new ArrayList<>();
         customerInfos.forEach(customerInfo -> {
-            List<Orders> ordersList = customerInfo.getOrders();
+            List<Orders> ordersList = orderRepository.findAllByCustomerInfo(customerInfo);
             ordersList.forEach(orders -> {
                 orderResponseList.add(orderMapper.toResponse(orders));
             });
