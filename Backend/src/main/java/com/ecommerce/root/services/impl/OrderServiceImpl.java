@@ -1,16 +1,10 @@
 package com.ecommerce.root.services.impl;
 
 import com.ecommerce.root.common.OrderStatus;
-import com.ecommerce.root.entity.CustomerInfo;
-import com.ecommerce.root.entity.OrderDetails;
-import com.ecommerce.root.entity.Orders;
-import com.ecommerce.root.entity.Product;
+import com.ecommerce.root.entity.*;
 import com.ecommerce.root.mapper.OrderDetailMapper;
 import com.ecommerce.root.mapper.OrderMapper;
-import com.ecommerce.root.repositories.CustomerInforRepository;
-import com.ecommerce.root.repositories.OrderDetailRepository;
-import com.ecommerce.root.repositories.OrderRepository;
-import com.ecommerce.root.repositories.ProductRepository;
+import com.ecommerce.root.repositories.*;
 import com.ecommerce.root.request.BuyProductRequest;
 import com.ecommerce.root.request.OrderDetailRequest;
 import com.ecommerce.root.request.OrderHistoryRequest;
@@ -42,6 +36,8 @@ public class OrderServiceImpl implements OrderService {
     private final OrderDetailRepository orderDetailRepository;
     private final OrderMapper orderMapper;
     private final OrderDetailMapper orderDetailMapper;
+    private final UserRepository userRepository;
+    private final CartRepository cartRepository;
 
     @Override
     public Object buyProduct(BuyProductRequest request) {
@@ -63,6 +59,8 @@ public class OrderServiceImpl implements OrderService {
                 .customerInfo(customerInfo)
                 .build();
         orders = orderRepository.save(orders);
+        User user = userRepository.findByUsername(request.getUserName());
+        cartRepository.deleteByUser(user);
         List<OrderDetailRequest> orderDetailRequestList = request.getOrderDetailRequests();
         for (OrderDetailRequest orderDetailRequest : orderDetailRequestList) {
             Long productId = orderDetailRequest.getProductId();
