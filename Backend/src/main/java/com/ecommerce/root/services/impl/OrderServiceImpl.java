@@ -12,6 +12,7 @@ import com.ecommerce.root.response.BaseResponse;
 import com.ecommerce.root.response.OrderDetailListResponse;
 import com.ecommerce.root.response.OrderHistoryResponse;
 import com.ecommerce.root.response.OrderResponse;
+import com.ecommerce.root.services.CartService;
 import com.ecommerce.root.services.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +40,7 @@ public class OrderServiceImpl implements OrderService {
     private final UserRepository userRepository;
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
+    private final CartService cartService;
 
     @Override
     public Object buyProduct(BuyProductRequest request) {
@@ -64,7 +66,9 @@ public class OrderServiceImpl implements OrderService {
         User user = userRepository.findByUsername(request.getUserName());
         Cart cart = cartRepository.findByUserId(user.getId());
         List<CartItem> cartItemList = cart.getCartItems();
-        cartItemRepository.deleteAll(cartItemList);
+        cartItemList.forEach(cartItem -> {
+            cartService.removeCartItem(cartItem.getId());
+        });
         List<OrderDetailRequest> orderDetailRequestList = request.getOrderDetailRequests();
         for (OrderDetailRequest orderDetailRequest : orderDetailRequestList) {
             Long productId = orderDetailRequest.getProductId();
