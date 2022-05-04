@@ -75,8 +75,8 @@ public class ProductServiceImpl implements ProductService {
                 listPredicate.add(cb.like(cb.upper(root.get("name")), "%" + name.toUpperCase() + "%"));
             }
             
-            Path<Object> sortClause = null;
-            Order order = null;
+            Path<Object> sortClause;
+            Order order;
             
             if (Objects.nonNull(sort)) {
                 
@@ -101,8 +101,7 @@ public class ProductServiceImpl implements ProductService {
                         sortClause = root.get("name");
                         order = cb.desc(sortClause);
                 }
-            }
-            {
+            } else {
                 sortClause = root.get("name");
                 order = cb.desc(sortClause);
             }
