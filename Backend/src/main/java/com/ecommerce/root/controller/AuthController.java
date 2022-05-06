@@ -6,12 +6,14 @@ import com.ecommerce.root.repositories.RoleRepository;
 import com.ecommerce.root.repositories.UserRepository;
 import com.ecommerce.root.request.LoginRequest;
 import com.ecommerce.root.request.SignupRequest;
+import com.ecommerce.root.response.BaseResponse;
 import com.ecommerce.root.response.JwtResponse;
 import com.ecommerce.root.response.MessageResponse;
 import com.ecommerce.root.security.jwt.JwtTokenProvider;
 import com.ecommerce.root.security.user.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -65,13 +67,19 @@ public class AuthController {
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse(Boolean.FALSE,"Error: Username is already taken!"));
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(BaseResponse.builder()
+                            .status(502)
+                            .data("Username đã tồn tại !")
+                            .build());
         }
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse(Boolean.FALSE,"Error: Email is already in use!"));
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(BaseResponse.builder()
+                            .status(501)
+                            .data("Email đã tồn tại !")
+                            .build());
         }
         // Create new user's account
         User user = User.builder()
