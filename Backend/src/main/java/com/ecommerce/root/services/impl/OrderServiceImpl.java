@@ -160,9 +160,10 @@ public class OrderServiceImpl implements OrderService {
     
     @Override
     public Object deleteOrder(Long orderId) {
-        Orders orders = orderRepository.findById(orderId);
-        orders.setStatus(OrderStatus.REJECTED.getCode());
-        orderRepository.save(orders);
+        Optional<Orders> orders = orderRepository.findById(orderId);
+       Orders orders1 = orders.get();
+       orders1.setStatus(OrderStatus.REJECTED.getCode());
+        orderRepository.save(orders1);
         return BaseResponse.builder()
                 .status(200)
                 .data("Xoá thành công")
