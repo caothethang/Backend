@@ -63,11 +63,11 @@ public class AuthController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
         
-        return ResponseEntity.ok(new JwtResponse(token,
+        return new JwtResponse(token,
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),
-                roles));
+                roles);
     }
     
     @PostMapping("/signup")
