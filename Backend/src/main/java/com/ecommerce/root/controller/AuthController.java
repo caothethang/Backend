@@ -46,16 +46,23 @@ public class AuthController {
     private final JwtTokenProvider jwtTokenProvider;
     
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    public Object authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtTokenProvider.generateToken(authentication);
         
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        if (userDetails == null){
+            return BaseResponse.builder()
+                    .status(502)
+                    .data("Đăng nhập thất bại !")
+                    .build();
+        }
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
+        
         return ResponseEntity.ok(new JwtResponse(token,
                 userDetails.getId(),
                 userDetails.getUsername(),
