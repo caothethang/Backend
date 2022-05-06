@@ -64,22 +64,18 @@ public class AuthController {
     }
     
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+    public Object registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(BaseResponse.builder()
+            return BaseResponse.builder()
                             .status(502)
                             .data("Username đã tồn tại !")
-                            .build());
+                            .build();
         }
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(BaseResponse.builder()
+            return BaseResponse.builder()
                             .status(501)
                             .data("Email đã tồn tại !")
-                            .build());
+                            .build();
         }
         // Create new user's account
         User user = User.builder()
