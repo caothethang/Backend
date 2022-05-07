@@ -71,6 +71,9 @@ public class ProductServiceImpl implements ProductService {
             if (Objects.nonNull(minPrice) && Objects.nonNull(maxPrice)) {
                 listPredicate.add(cb.between(root.get("price"), minPrice, maxPrice));
             }
+            if (Objects.nonNull(minPrice) && Objects.isNull(maxPrice)) {
+                listPredicate.add(cb.greaterThanOrEqualTo(root.get("price"), minPrice));
+            }
             if (Objects.nonNull(name)) {
                 listPredicate.add(cb.like(cb.upper(root.get("name")), "%" + name.toUpperCase() + "%"));
             }
