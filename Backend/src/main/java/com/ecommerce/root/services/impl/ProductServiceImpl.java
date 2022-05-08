@@ -115,8 +115,10 @@ public class ProductServiceImpl implements ProductService {
             Predicate[] finalPredicate = new Predicate[listPredicate.size()];
             listPredicate.toArray(finalPredicate);
             TypedQuery<Product> query = em.createQuery(cq.select(root).where(cb.and(finalPredicate)).orderBy(order));
-            query.setMaxResults(pageSize);
-            query.setFirstResult(pageIndex * pageSize);
+            if (Objects.nonNull(pageIndex) && Objects.nonNull(pageSize)){
+                query.setMaxResults(pageSize);
+                query.setFirstResult(pageIndex * pageSize);
+            }
             
             List<Product> productList = query.getResultList();
             productResponses = new ArrayList<>();
