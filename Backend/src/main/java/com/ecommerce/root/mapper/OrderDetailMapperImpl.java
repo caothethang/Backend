@@ -15,6 +15,7 @@ public class OrderDetailMapperImpl implements OrderDetailMapper{
                 .price(orderDetails.getPrice())
                 .quantity(orderDetails.getQuantity())
                 .categoryName(orderDetails.getProduct().getCategory().getName())
+                .size(orderDetails.getSize())
                 .productName(orderDetails.getProduct().getName())
                 .build();
     }
