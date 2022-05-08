@@ -58,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
     }
     
     @Override
-    public List<ProductResponse> getAllProduct(String category, Long minPrice, Long maxPrice, String name, Integer sort, Integer pageIndex) {
+    public List<ProductResponse> getAllProduct(String category, Long minPrice, Long maxPrice, String name, Integer sort, Integer pageIndex,Integer pageSize) {
         List<ProductResponse> productResponses = null;
         try {
             CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -115,8 +115,8 @@ public class ProductServiceImpl implements ProductService {
             Predicate[] finalPredicate = new Predicate[listPredicate.size()];
             listPredicate.toArray(finalPredicate);
             TypedQuery<Product> query = em.createQuery(cq.select(root).where(cb.and(finalPredicate)).orderBy(order));
-            query.setMaxResults(10);
-            query.setFirstResult(pageIndex * 10);
+            query.setMaxResults(pageSize);
+            query.setFirstResult(pageIndex * pageSize);
             
             List<Product> productList = query.getResultList();
             productResponses = new ArrayList<>();

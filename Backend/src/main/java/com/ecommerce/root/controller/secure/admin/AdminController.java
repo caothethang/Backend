@@ -48,9 +48,10 @@ public class AdminController {
             @RequestParam(value = "max_price", required = false) Long maxPrice,
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "sort", required = false) Integer sort,
-            @RequestParam(value = "page", required = false) Integer pageIndex
+            @RequestParam(value = "page", required = false) Integer pageIndex,
+            @RequestParam(value = "page_size",required = false) Integer pageSize
     ) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category, minPrice, maxPrice, name, sort, pageIndex));
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category, minPrice, maxPrice, name, sort, pageIndex,pageSize));
     }
     
     @PostMapping("/product/update")

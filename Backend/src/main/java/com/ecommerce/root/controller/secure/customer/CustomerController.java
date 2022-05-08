@@ -64,9 +64,10 @@ public class CustomerController {
             @RequestParam(value = "max_price", required = false) Long maxPrice,
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "sort") Integer sort,
-            @RequestParam(value = "page") Integer pageIndex
+            @RequestParam(value = "page") Integer pageIndex,
+            @RequestParam(value = "page_size",required = false) Integer pageSize
     ) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category, minPrice, maxPrice, name, sort, pageIndex));
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct(category, minPrice, maxPrice, name, sort, pageIndex,pageSize));
     }
     
     // xem lịch sử mua hàng

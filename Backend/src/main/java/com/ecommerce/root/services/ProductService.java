@@ -17,5 +17,5 @@ public interface ProductService {
     
     ProductResponse getProductDetail(Long id);
     
-    List<ProductResponse> getAllProduct(String category, Long minPrice, Long maxPrice, String name,Integer sort, Integer pageIndex);
+    List<ProductResponse> getAllProduct(String category, Long minPrice, Long maxPrice, String name,Integer sort, Integer pageIndex,Integer pageSize);
 }
