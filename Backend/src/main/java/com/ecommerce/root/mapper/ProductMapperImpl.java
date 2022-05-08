@@ -18,8 +18,12 @@ public class ProductMapperImpl implements ProductMapper{
             return null;
         }
         List<String> size = null;
+        List<String> color = null;
         if (Objects.nonNull(product.getSize())){
             size = Arrays.stream(product.getSize().split(",")).collect(Collectors.toList());
+        }
+        if (Objects.nonNull(product.getColor())){
+            color = Arrays.stream(product.getColor().split(",")).collect(Collectors.toList());
         }
         return ProductResponse.builder()
                 .id(product.getId())
@@ -33,7 +37,7 @@ public class ProductMapperImpl implements ProductMapper{
                 .categoryName(product.getCategory().getName())
                 .hasFreeShipping(product.isHasFreeShipping())
                 .rate(product.getRate())
-                .color(product.getColor())
+                .color(color)
                 .build();
     }
 }

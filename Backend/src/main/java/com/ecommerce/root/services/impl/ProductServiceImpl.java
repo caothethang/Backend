@@ -40,6 +40,7 @@ public class ProductServiceImpl implements ProductService {
             response.setFailed(HttpCodeDef.BAD_REQUEST, "Category Not Found");
         }
         String size = String.join(",", request.getSize());
+        String color = String.join(",", request.getColor());
         Product product = Product.builder()
                 .image(request.getImg())
                 .name(request.getName())
@@ -48,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
                 .hasFreeShipping(request.getHasFreeShipping())
                 .description(request.getDescription())
                 .size(size)
-                .color(request.getColor())
+                .color(color)
                 .category(optionalCategory.get())
                 .createdAt(new Timestamp(System.currentTimeMillis()))
                 .build();
