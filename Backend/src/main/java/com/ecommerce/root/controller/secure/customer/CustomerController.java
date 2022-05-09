@@ -98,7 +98,7 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.OK).body(customerService.updateProfile(updateProfileRequest));
     }
     
-    @GetMapping("/profile")
+    @PostMapping("/profile")
     public ResponseEntity<?> updateProfile(
             @RequestBody Long userId
     ){
