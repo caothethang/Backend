@@ -30,5 +30,7 @@ public class CartResponse {
     private Long price;
     
     private String size;
+    
+    private String color;
 
 }

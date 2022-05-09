@@ -41,6 +41,9 @@ public class CartItem extends BaseEntity{
     @Column(name = "size")
     private String size;
     
+    @Column(name = "color")
+    private String color;
+    
     @Column(name = "status")
     private Integer status;
     

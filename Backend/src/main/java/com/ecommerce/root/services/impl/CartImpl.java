@@ -74,6 +74,7 @@ public class CartImpl implements CartService {
                     .productName(product.getName())
                     .image(product.getImage())
                     .size(request.getSize())
+                    .color(request.getColor())
                     .createdAt(new Timestamp(System.currentTimeMillis()))
                     .build();
             cartItemRepository.save(cartItem);
@@ -90,6 +91,7 @@ public class CartImpl implements CartService {
                     .quantity(request.getQuantity())
                     .cart(cart)
                     .size(request.getSize())
+                    .color(request.getColor())
                     .image(product.getImage())
                     .price(request.getPrice())
                     .createdAt(new Timestamp(System.currentTimeMillis()))

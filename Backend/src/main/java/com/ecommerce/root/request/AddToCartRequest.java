@@ -19,6 +19,8 @@ public class AddToCartRequest {
     private Long price;
     
     private String size;
+    
+    private String color;
 
     
 }
