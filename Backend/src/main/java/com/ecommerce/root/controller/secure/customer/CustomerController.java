@@ -1,10 +1,8 @@
 package com.ecommerce.root.controller.secure.customer;
 
-import com.ecommerce.root.request.AddToCartRequest;
-import com.ecommerce.root.request.BuyProductRequest;
-import com.ecommerce.root.request.OrderHistoryRequest;
-import com.ecommerce.root.request.UpdateCartRequest;
+import com.ecommerce.root.request.*;
 import com.ecommerce.root.services.CartService;
+import com.ecommerce.root.services.CustomerService;
 import com.ecommerce.root.services.OrderService;
 import com.ecommerce.root.services.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +21,7 @@ public class CustomerController {
     private final OrderService orderService;
     private final ProductService productService;
     private final CartService cartService;
+    private final CustomerService customerService;
     
     @PostMapping("/add-to-cart")
     public ResponseEntity<?> addToCart(
@@ -90,6 +89,20 @@ public class CustomerController {
             @RequestParam("id") Long orderId
     ){
         return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrderDetail(orderId));
+    }
+    
+    @PostMapping("/update-profile")
+    public ResponseEntity<?> updateProfile(
+            @RequestBody UpdateProfileRequest updateProfileRequest
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(customerService.updateProfile(updateProfileRequest));
+    }
+    
+    @GetMapping("/profile")
+    public ResponseEntity<?> updateProfile(
+            @RequestBody Long userId
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(customerService.getProfile(userId));
     }
     
 }
