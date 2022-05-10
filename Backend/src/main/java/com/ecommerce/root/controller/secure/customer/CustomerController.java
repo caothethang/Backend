@@ -100,9 +100,9 @@ public class CustomerController {
     
     @PostMapping("/profile")
     public ResponseEntity<?> updateProfile(
-            @RequestBody Long userId
+            @RequestBody GetProfileRequest getProfileRequest
     ){
-        return ResponseEntity.status(HttpStatus.OK).body(customerService.getProfile(userId));
+        return ResponseEntity.status(HttpStatus.OK).body(customerService.getProfile(getProfileRequest.getId()));
     }
     
 }
