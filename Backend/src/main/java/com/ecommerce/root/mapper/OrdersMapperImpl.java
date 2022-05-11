@@ -23,6 +23,7 @@ public class OrdersMapperImpl implements OrderMapper{
                 .address(customerInfo.getAddress())
                 .status(orders.getStatus())
                 .userName(orders.getUserName())
+                .fullName(customerInfo.getFullName())
                 .createdAt(orders.getCreatedAt().getTime())
                 .build();
     }
