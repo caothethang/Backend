@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b3cf38a6-0703-4c16-8568-08711acf9f2e" name="Changes" comment="aa">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Springboot.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/AppStarter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/EcommerceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/common/HttpCodeDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/common/OrderStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/common/RoleTypeEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/config/CORSFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/config/CloudinaryConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/config/SwaggerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/config/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/controller/PublicController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/controller/secure/admin/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/controller/secure/customer/CustomerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/entity/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/entity/Cart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/entity/CartItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/entity/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/entity/CustomerInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/entity/CustomerProfile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/entity/OrderDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/entity/Orders.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/entity/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/entity/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/exception_handle/ExceptionHandling.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/exception_handle/NotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/mapper/CartMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/mapper/CartMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/mapper/OrderDetailMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/mapper/OrderDetailMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/mapper/OrderMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/mapper/OrdersMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/mapper/ProductMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/mapper/ProductMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/repositories/CartItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/repositories/CartRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/repositories/CategoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/repositories/CustomerInforRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/repositories/CustomerProfileRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/repositories/OrderDetailRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/repositories/OrderRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/repositories/ProductRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/repositories/RoleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/repositories/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/AddToCartRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/BuyProductRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/CategoryRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/CreateProductRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/GetProfileRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/LoginRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/OrderDetailRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/OrderHistoryRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/SignupRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/UpdateCartRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/UpdateProductRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/request/UpdateProfileRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/response/BaseResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/response/CartResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/response/CategoryResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/response/JwtResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/response/MessageResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/response/OrderDetailListResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/response/OrderHistoryResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/response/OrderResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/response/ProductResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/response/UserResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/security/AuthEntryPointJwt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/security/AuthTokenFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/security/jwt/JwtTokenProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/security/user/UserDetailsImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/AdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/CartService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/CategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/CustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/ImageService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/ProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/impl/AdminServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/impl/CartImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/impl/CategoryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/impl/CustomerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/impl/ImageServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/impl/OrderServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerce/root/services/impl/ProductServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ecommerce/root/GardenApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="abc" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1649168376" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="abc" />
+                    <option name="lastUsedInstant" value="1649168353" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/.." />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectId" id="27E6lMhXKsI3vVRYw0F5DtEpeTv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DATN_SpringBoot_Backend" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Code With Me" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ecommerce.root.request" />
+      <recent name="com.ecommerce.root.response" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GitHub\Green_Garden\Backend\src\main\resources\db\changelog" />
+      <recent name="D:\GitHub\Green_Garden\Backend\src\main\java\com\garden\root\entity" />
+      <recent name="D:\GitHub\Green_Garden\Backend\src\main\resources\db" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.garden.root.controller" />
+      <recent name="com.garden.root.services.impl" />
+      <recent name="com.garden.root.security" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="EcommerceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="Ecommerce" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ecommerce.root.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecommerce.root.EcommerceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.EcommerceApplication" />
+        <item itemvalue="Spring Boot.EcommerceApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b3cf38a6-0703-4c16-8568-08711acf9f2e" name="Changes" comment="" />
+      <created>1648873049041</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648873049041</updated>
+      <workItem from="1648873050347" duration="2639000" />
+      <workItem from="1648910238967" duration="11095000" />
+      <workItem from="1648974166182" duration="7918000" />
+      <workItem from="1648997279167" duration="613000" />
+      <workItem from="1649082345677" duration="4195000" />
+      <workItem from="1649166986452" duration="6822000" />
+      <workItem from="1649352976388" duration="3482000" />
+      <workItem from="1649495611356" duration="4752000" />
+      <workItem from="1649552108748" duration="7056000" />
+      <workItem from="1649687003269" duration="1217000" />
+      <workItem from="1649773105712" duration="9249000" />
+      <workItem from="1649946919610" duration="66000" />
+      <workItem from="1649947812703" duration="3485000" />
+      <workItem from="1650068408322" duration="17010000" />
+      <workItem from="1650159483141" duration="1445000" />
+      <workItem from="1650206605028" duration="5614000" />
+      <workItem from="1650246910481" duration="1282000" />
+      <workItem from="1650250181188" duration="14552000" />
+      <workItem from="1650548567277" duration="16732000" />
+      <workItem from="1650685183576" duration="1071000" />
+      <workItem from="1650706295313" duration="503000" />
+      <workItem from="1650722450464" duration="1890000" />
+      <workItem from="1650766314116" duration="18829000" />
+      <workItem from="1650993761498" duration="1081000" />
+      <workItem from="1651019577616" duration="638000" />
+      <workItem from="1651055977794" duration="17000" />
+      <workItem from="1651056010402" duration="31000" />
+      <workItem from="1651056055484" duration="1383000" />
+      <workItem from="1651238289098" duration="6713000" />
+      <workItem from="1651327792695" duration="2000" />
+      <workItem from="1651415700550" duration="372000" />
+      <workItem from="1651422155868" duration="1289000" />
+      <workItem from="1651504487955" duration="1155000" />
+      <workItem from="1651510088162" duration="2797000" />
+      <workItem from="1651544058762" duration="2112000" />
+      <workItem from="1651586228884" duration="2747000" />
+      <workItem from="1651622658599" duration="22000" />
+      <workItem from="1651673250688" duration="72000" />
+      <workItem from="1651678544366" duration="2744000" />
+      <workItem from="1651761668617" duration="8379000" />
+      <workItem from="1651917045654" duration="3472000" />
+      <workItem from="1651977749561" duration="10054000" />
+      <workItem from="1652055405310" duration="1190000" />
+      <workItem from="1652104362671" duration="7337000" />
+      <workItem from="1652192755370" duration="4065000" />
+      <workItem from="1652280394321" duration="1319000" />
+      <workItem from="1652312884419" duration="756000" />
+    </task>
+    <task id="LOCAL-00001" summary="for ecommerce">
+      <created>1648874488312</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1648874488312</updated>
+    </task>
+    <task id="LOCAL-00002" summary="for ecommerce">
+      <created>1648982183442</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1648982183442</updated>
+    </task>
+    <task id="LOCAL-00003" summary="for ecommerce">
+      <created>1649499575588</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649499575588</updated>
+    </task>
+    <task id="LOCAL-00004" summary="for ecommerce">
+      <created>1649564137906</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649564137906</updated>
+    </task>
+    <task id="LOCAL-00005" summary="for ecommerce">
+      <created>1650100779977</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650100779977</updated>
+    </task>
+    <task id="LOCAL-00006" summary="for ecommerce">
+      <created>1650646189179</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1650646189179</updated>
+    </task>
+    <task id="LOCAL-00007" summary="for ecommerce">
+      <created>1650685542960</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650685542960</updated>
+    </task>
+    <task id="LOCAL-00008" summary="for ecommerce">
+      <created>1650706529686</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1650706529686</updated>
+    </task>
+    <task id="LOCAL-00009" summary="for ecommerce">
+      <created>1650723808678</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1650723808678</updated>
+    </task>
+    <task id="LOCAL-00010" summary="for ecommerce">
+      <created>1650766475271</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1650766475271</updated>
+    </task>
+    <task id="LOCAL-00011" summary="for ecommerce">
+      <created>1650767365129</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1650767365129</updated>
+    </task>
+    <task id="LOCAL-00012" summary="for ecommerce">
+      <created>1650768573356</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1650768573356</updated>
+    </task>
+    <task id="LOCAL-00013" summary="for ecommerce">
+      <created>1650768781953</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1650768781953</updated>
+    </task>
+    <task id="LOCAL-00014" summary="for ecommerce">
+      <created>1650769093744</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1650769093744</updated>
+    </task>
+    <task id="LOCAL-00015" summary="for ecommerce">
+      <created>1650769495152</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1650769495152</updated>
+    </task>
+    <task id="LOCAL-00016" summary="for ecommerce">
+      <created>1650769943502</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1650769943502</updated>
+    </task>
+    <task id="LOCAL-00017" summary="for ecommerce">
+      <created>1650814261566</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1650814261566</updated>
+    </task>
+    <task id="LOCAL-00018" summary="for ecommerce">
+      <created>1650816857090</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1650816857090</updated>
+    </task>
+    <task id="LOCAL-00019" summary="for ecommerce">
+      <created>1650901871713</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1650901871713</updated>
+    </task>
+    <task id="LOCAL-00020" summary="for ecommerce">
+      <created>1650902021311</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1650902021311</updated>
+    </task>
+    <task id="LOCAL-00021" summary="for ecommerce">
+      <created>1650902269039</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1650902269039</updated>
+    </task>
+    <task id="LOCAL-00022" summary="for ecommerce">
+      <created>1650902339723</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1650902339723</updated>
+    </task>
+    <task id="LOCAL-00023" summary="for ecommerce">
+      <created>1651019611023</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1651019611023</updated>
+    </task>
+    <task id="LOCAL-00024" summary="for ecommerce">
+      <created>1651243788702</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1651243788702</updated>
+    </task>
+    <task id="LOCAL-00025" summary="for ecommerce">
+      <created>1651422452779</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1651422452779</updated>
+    </task>
+    <task id="LOCAL-00026" summary="for ecommerce">
+      <created>1651422834951</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1651422834951</updated>
+    </task>
+    <task id="LOCAL-00027" summary="for ecommerce">
+      <created>1651504897042</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1651504897042</updated>
+    </task>
+    <task id="LOCAL-00028" summary="for ecommerce">
+      <created>1651534593901</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1651534593901</updated>
+    </task>
+    <task id="LOCAL-00029" summary="clear">
+      <created>1651544799634</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1651544799634</updated>
+    </task>
+    <task id="LOCAL-00030" summary="clear">
+      <created>1651588139362</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1651588139362</updated>
+    </task>
+    <task id="LOCAL-00031" summary="aa">
+      <created>1651589120583</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1651589120583</updated>
+    </task>
+    <task id="LOCAL-00032" summary="aa">
+      <created>1651680941911</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1651680941911</updated>
+    </task>
+    <task id="LOCAL-00033" summary="aa">
+      <created>1651847195824</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1651847195825</updated>
+    </task>
+    <task id="LOCAL-00034" summary="aa">
+      <created>1651850936018</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1651850936018</updated>
+    </task>
+    <task id="LOCAL-00035" summary="aa">
+      <created>1651851233521</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1651851233521</updated>
+    </task>
+    <task id="LOCAL-00036" summary="aa">
+      <created>1651851297490</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1651851297490</updated>
+    </task>
+    <task id="LOCAL-00037" summary="aa">
+      <created>1651933758058</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1651933758058</updated>
+    </task>
+    <task id="LOCAL-00038" summary="aa">
+      <created>1651978917052</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1651978917052</updated>
+    </task>
+    <task id="LOCAL-00039" summary="aa">
+      <created>1651980320712</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1651980320712</updated>
+    </task>
+    <task id="LOCAL-00040" summary="aa">
+      <created>1651981001643</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1651981001643</updated>
+    </task>
+    <task id="LOCAL-00041" summary="aa">
+      <created>1651984984773</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1651984984773</updated>
+    </task>
+    <task id="LOCAL-00042" summary="aa">
+      <created>1651985042146</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1651985042146</updated>
+    </task>
+    <task id="LOCAL-00043" summary="aa">
+      <created>1652056008878</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1652056008879</updated>
+    </task>
+    <task id="LOCAL-00044" summary="aa">
+      <created>1652109573263</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1652109573263</updated>
+    </task>
+    <task id="LOCAL-00045" summary="aa">
+      <created>1652111411244</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1652111411244</updated>
+    </task>
+    <task id="LOCAL-00046" summary="aa">
+      <created>1652192844705</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1652192844705</updated>
+    </task>
+    <task id="LOCAL-00047" summary="aa">
+      <created>1652280797764</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1652280797764</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="for ecommerce" />
+    <MESSAGE value="clear" />
+    <MESSAGE value="aa" />
+    <option name="LAST_COMMIT_MESSAGE" value="aa" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/ecommerce/root/mapper/ProductMapperImpl.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Backend$EcommerceApplication.ic" NAME="EcommerceApplication Coverage Results" MODIFIED="1648978360148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ecommerce.root.*</FILTER>
+    </SUITE>
+  </component>
+</project>
