@@ -38,6 +38,8 @@ public class ProductMapperImpl implements ProductMapper{
                 .hasFreeShipping(product.isHasFreeShipping())
                 .rate(product.getRate())
                 .color(color)
+                .source(product.getSource())
+                .salePercentage(product.getSalePercentage())
                 .build();
     }
 }

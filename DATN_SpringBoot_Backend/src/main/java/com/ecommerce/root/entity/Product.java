@@ -51,4 +51,9 @@ public class Product extends BaseEntity{
     @Column(name = "rating")
     private Integer rate;
     
+    @Column(name = "source")
+    private String source;
+    
+    @Column(name = "sale_percentage")
+    private Integer salePercentage;
 }

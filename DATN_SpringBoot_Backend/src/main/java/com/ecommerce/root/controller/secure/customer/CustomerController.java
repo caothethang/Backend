@@ -105,4 +105,12 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.OK).body(customerService.getProfile(getProfileRequest.getId()));
     }
     
+    @PostMapping("/order/action")
+    public ResponseEntity<?> approveOrder(
+            @RequestParam("id") Long orderId,
+            @RequestParam("status") Integer status
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.approveOrder(orderId,status));
+    }
+    
 }

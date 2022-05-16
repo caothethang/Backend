@@ -84,6 +84,8 @@ public class OrderServiceImpl implements OrderService {
                         .createdAt(new Timestamp(System.currentTimeMillis()))
                         .orders(orders)
                         .build();
+                product.setQuantity(product.getQuantity() - orderDetailRequest.getQuantity());
+                productRepository.save(product);
                 orderDetailRepository.save(orderDetails);
             } else {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Không tìm thấy sản phẩm !");
@@ -188,6 +190,7 @@ public class OrderServiceImpl implements OrderService {
                 Orders orders = optionalOrders.get();
                 orders.setStatus(OrderStatus.APPROVED.getCode());
                 orders.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+                
                 orderRepository.save(orders);
                 return BaseResponse.builder()
                         .status(200)
@@ -198,6 +201,36 @@ public class OrderServiceImpl implements OrderService {
         return BaseResponse.builder()
                 .status(500)
                 .data("Không tìm thấy orders")
+                .build();
+    }
+    
+    public Object customerActionOrder(Long orderId, Integer status) {
+        Optional<Orders> optionalOrders = orderRepository.findById(orderId);
+        if (optionalOrders.isPresent()) {
+            if (status == 0) {
+                Orders orders = optionalOrders.get();
+                orders.setStatus(OrderStatus.CUSTOMER_RETURNS.getCode());
+                orders.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+                orderRepository.save(orders);
+                return BaseResponse.builder()
+                        .status(200)
+                        .data("Khách hàng hoàn trả đơn hàng")
+                        .build();
+            }
+            if (status == 1) {
+                Orders orders = optionalOrders.get();
+                orders.setStatus(OrderStatus.CUSTOMER_RECEIVED_SUCCESS.getCode());
+                orders.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+                orderRepository.save(orders);
+                return BaseResponse.builder()
+                        .status(200)
+                        .data("Khách hàng nhận hàng thành công")
+                        .build();
+            }
+        }
+        return BaseResponse.builder()
+                .status(500)
+                .data("Không tìm thấy bản ghi")
                 .build();
     }
 }

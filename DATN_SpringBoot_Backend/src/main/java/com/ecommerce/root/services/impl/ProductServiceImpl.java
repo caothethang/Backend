@@ -51,6 +51,7 @@ public class ProductServiceImpl implements ProductService {
                 .size(size)
                 .color(color)
                 .category(optionalCategory.get())
+                .source(request.getSource())
                 .createdAt(new Timestamp(System.currentTimeMillis()))
                 .build();
         productRepository.save(product);
@@ -134,6 +135,8 @@ public class ProductServiceImpl implements ProductService {
     
     @Override
     public ProductResponse updateProduct(UpdateProductRequest request) {
+        String size = String.join(",", request.getSize());
+        String color = String.join(",", request.getColor());
         Optional<Product> optionalProduct = productRepository.findById(request.getId());
         Optional<Category> optionalCategory = categoryRepository.findById(request.getCategoryId());
         if (optionalProduct.isPresent()) {
@@ -145,6 +148,9 @@ public class ProductServiceImpl implements ProductService {
             product.setQuantity(request.getQuantity());
             product.setCategory(optionalCategory.get());
             product.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+            product.setSalePercentage(request.getSalePercentage());
+            product.setSize(size);
+            product.setColor(color);
             product = productRepository.save(product);
             return productMapper.toProductResponse(product);
         }

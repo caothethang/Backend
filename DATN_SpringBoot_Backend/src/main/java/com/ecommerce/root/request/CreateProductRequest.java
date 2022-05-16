@@ -30,4 +30,6 @@ public class CreateProductRequest {
     
     private List<String> color;
     
+    private String source;
+    
 }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 @Data
 @EqualsAndHashCode
 public class UpdateProductRequest {
@@ -22,4 +24,10 @@ public class UpdateProductRequest {
     
     @JsonProperty("category_id")
     private Long categoryId;
+    
+    private List<String> size;
+    
+    private List<String> color;
+    
+    private Integer salePercentage;
 }
