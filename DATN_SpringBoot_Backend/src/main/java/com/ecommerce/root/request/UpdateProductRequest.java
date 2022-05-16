@@ -29,5 +29,6 @@ public class UpdateProductRequest {
     
     private List<String> color;
     
+    @JsonProperty("sale_percentage")
     private Integer salePercentage;
 }

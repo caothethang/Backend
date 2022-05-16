@@ -52,6 +52,7 @@ public class ProductServiceImpl implements ProductService {
                 .color(color)
                 .category(optionalCategory.get())
                 .source(request.getSource())
+                .salePercentage(request.getSalePercentage())
                 .createdAt(new Timestamp(System.currentTimeMillis()))
                 .build();
         productRepository.save(product);

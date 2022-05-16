@@ -32,4 +32,7 @@ public class CreateProductRequest {
     
     private String source;
     
+    @JsonProperty("sale_percentage")
+    private Integer salePercentage;
+    
 }
