@@ -31,4 +31,6 @@ public class UpdateProductRequest {
     
     @JsonProperty("sale_percentage")
     private Integer salePercentage;
+    
+    private String source;
 }

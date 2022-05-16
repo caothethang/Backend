@@ -152,6 +152,7 @@ public class ProductServiceImpl implements ProductService {
             product.setSalePercentage(request.getSalePercentage());
             product.setSize(size);
             product.setColor(color);
+            product.setSource(request.getSource());
             product = productRepository.save(product);
             return productMapper.toProductResponse(product);
         }
