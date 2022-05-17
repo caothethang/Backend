@@ -1,6 +1,7 @@
 package com.ecommerce.root.services.impl;
 
 import com.ecommerce.root.common.HttpCodeDef;
+import com.ecommerce.root.entity.BaseEntity;
 import com.ecommerce.root.entity.Category;
 import com.ecommerce.root.entity.Product;
 import com.ecommerce.root.mapper.ProductMapper;
@@ -20,6 +21,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.sql.Timestamp;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -124,6 +126,7 @@ public class ProductServiceImpl implements ProductService {
             }
             
             List<Product> productList = query.getResultList();
+            productList =  productList.stream().sorted(Comparator.comparing(BaseEntity::getCreatedAt).reversed()).collect(Collectors.toList());
             productResponses = new ArrayList<>();
             for (Product product : productList) {
                 productResponses.add(productMapper.toProductResponse(product));

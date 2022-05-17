@@ -28,4 +28,5 @@ public class ProductResponse {
     private String source;
     @JsonProperty("sale_percentage")
     private Integer salePercentage;
+    
 }
