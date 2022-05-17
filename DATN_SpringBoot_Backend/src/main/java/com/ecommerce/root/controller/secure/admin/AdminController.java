@@ -122,4 +122,12 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.OK).body(orderService.approveOrder(orderId,status));
     }
     
+    @GetMapping("/turn-over")
+    public ResponseEntity<?> getTurnOver(
+            @RequestParam(value = "start_date")Long startDate,
+            @RequestParam(value = "end_date") Long endDate
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.calculateTurnOver(startDate,endDate));
+    }
+    
 }

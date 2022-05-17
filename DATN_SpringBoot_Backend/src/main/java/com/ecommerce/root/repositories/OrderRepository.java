@@ -8,15 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Orders,Long> {
 
-//    @Transactional
-//    @Query(value = "delete from tbl_orders where id = :id",nativeQuery = true)
-//    @Modifying
-//    void deleteById(Long id);
 
     List<Orders> findAllByCustomerInfo(CustomerInfo customerInfo);
+    
+    List<Orders> findAllByCreatedAtGreaterThanAndCreatedAtLessThan(Timestamp startTime, Timestamp endTime);
 }

@@ -10,6 +10,7 @@ public class BaseResponse<T> {
     protected String rd;
     protected Integer status;
     protected T data;
+    protected T totalTurnover;
     
     public void setSuccess() {
         this.rc = 0;

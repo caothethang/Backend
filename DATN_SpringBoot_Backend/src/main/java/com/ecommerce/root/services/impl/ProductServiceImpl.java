@@ -145,9 +145,15 @@ public class ProductServiceImpl implements ProductService {
         Optional<Category> optionalCategory = categoryRepository.findById(request.getCategoryId());
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
-            product.setName(request.getName());
-            product.setDescription(request.getDescription());
-            product.setImage(request.getImg());
+            if (Objects.nonNull(request.getName())){
+                product.setName(request.getName());
+            }
+            if (Objects.nonNull(request.getDescription())){
+                product.setDescription(request.getDescription());
+            }
+            if (Objects.nonNull(request.getImg())){
+                product.setImage(request.getImg());
+            }
             product.setPrice(request.getPrice());
             product.setQuantity(request.getQuantity());
             product.setCategory(optionalCategory.get());

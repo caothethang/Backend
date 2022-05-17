@@ -16,4 +16,6 @@ public interface OrderService {
     Object getOrderDetail(Long orderId);
     
     Object deleteOrder(Long orderId);
+    
+    Object calculateTurnOver(Long startDate, Long endDate);
 }
