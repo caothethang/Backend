@@ -84,8 +84,6 @@ public class OrderServiceImpl implements OrderService {
                         .createdAt(new Timestamp(System.currentTimeMillis()))
                         .orders(orders)
                         .build();
-                product.setQuantity(product.getQuantity() - orderDetailRequest.getQuantity());
-                productRepository.save(product);
                 orderDetailRepository.save(orderDetails);
             } else {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Không tìm thấy sản phẩm !");
