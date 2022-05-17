@@ -178,6 +178,14 @@ public class OrderServiceImpl implements OrderService {
         if (optionalOrders.isPresent()) {
             if (status == 0) {
                 Orders orders = optionalOrders.get();
+                List<OrderDetails> orderDetailsList = orderDetailRepository.findAllByOrders(orders);
+                
+                orderDetailsList.forEach(orderDetails -> {
+                    Product product = orderDetails.getProduct();
+                    product.setQuantity(product.getQuantity() - orderDetails.getQuantity());
+                    productRepository.save(product);
+                });
+                
                 orders.setStatus(OrderStatus.REJECTED.getCode());
                 orders.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
                 orderRepository.save(orders);
