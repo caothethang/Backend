@@ -97,11 +97,11 @@ public class ProductServiceImpl implements ProductService {
                         sortClause = root.get("name");
                         order = cb.desc(sortClause);
                         break;
-                    case 3:
+                    case 2:
                         sortClause = root.get("price");
                         order = cb.asc(sortClause);
                         break;
-                    case 4:
+                    case 3:
                         sortClause = root.get("price");
                         order = cb.desc(sortClause);
                         break;
