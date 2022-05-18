@@ -126,7 +126,7 @@ public class ProductServiceImpl implements ProductService {
             }
             
             List<Product> productList = query.getResultList();
-            productList =  productList.stream().sorted(Comparator.comparing(BaseEntity::getCreatedAt).reversed()).collect(Collectors.toList());
+//            productList =  productList.stream().sorted(Comparator.comparing(BaseEntity::getCreatedAt).reversed()).collect(Collectors.toList());
             productResponses = new ArrayList<>();
             for (Product product : productList) {
                 productResponses.add(productMapper.toProductResponse(product));
