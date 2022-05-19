@@ -17,5 +17,5 @@ public interface OrderRepository extends JpaRepository<Orders,Long> {
 
     List<Orders> findAllByCustomerInfo(CustomerInfo customerInfo);
     
-    List<Orders> findAllByCreatedAtGreaterThanAndCreatedAtLessThan(Timestamp startTime, Timestamp endTime);
+    List<Orders> findAllByCreatedAtGreaterThanAndCreatedAtLessThanAndStatus(Timestamp startTime, Timestamp endTime,Integer status);
 }
