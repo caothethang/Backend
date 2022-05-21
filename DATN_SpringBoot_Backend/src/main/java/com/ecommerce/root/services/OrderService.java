@@ -18,4 +18,6 @@ public interface OrderService {
     Object deleteOrder(Long orderId);
     
     Object calculateTurnOver(Long startDate, Long endDate);
+    
+    Object customerActionOrder(Long orderId, Integer status);
 }

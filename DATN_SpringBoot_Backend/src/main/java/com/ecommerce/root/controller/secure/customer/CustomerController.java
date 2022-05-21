@@ -110,7 +110,7 @@ public class CustomerController {
             @RequestParam("id") Long orderId,
             @RequestParam("status") Integer status
     ){
-        return ResponseEntity.status(HttpStatus.OK).body(orderService.approveOrder(orderId,status));
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.customerActionOrder(orderId,status));
     }
     
 }

@@ -75,6 +75,9 @@ public class OrderServiceImpl implements OrderService {
             Optional<Product> optionalProduct = productRepository.findById(productId);
             if (optionalProduct.isPresent()) {
                 Product product = optionalProduct.get();
+                if (orderDetailRequest.getQuantity() > product.getQuantity()){
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Vượt quá số lượng trong kho");
+                }
                 OrderDetails orderDetails = OrderDetails.builder()
                         .product(product)
                         .size(orderDetailRequest.getSize())
