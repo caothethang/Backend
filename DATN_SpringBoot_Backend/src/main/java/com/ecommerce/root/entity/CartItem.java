@@ -32,6 +32,9 @@ public class CartItem extends BaseEntity{
     @Column(name = "product_name")
     private String productName;
     
+    @Column(name = "product_quantity")
+    private Long productQuantity;
+    
     @Column(name = "quantity")
     private Integer quantity;
     

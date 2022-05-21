@@ -20,6 +20,9 @@ public class CartResponse {
     @JsonProperty("product_id")
     private Long productId;
     
+    @JsonProperty("product_quantity")
+    private Long productQuantity;
+    
     @JsonProperty("product_name")
     private String productName;
 
