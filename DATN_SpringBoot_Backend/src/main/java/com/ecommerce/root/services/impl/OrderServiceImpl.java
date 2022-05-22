@@ -175,7 +175,7 @@ public class OrderServiceImpl implements OrderService {
     
     @Override
     public Object calculateTurnOver(Long startDate, Long endDate) {
-        List<Orders> ordersList = orderRepository.findAllByCreatedAtGreaterThanAndCreatedAtLessThanAndStatus(new Timestamp(startDate),new Timestamp(endDate),OrderStatus.CUSTOMER_RECEIVED_SUCCESS.getCode());
+        List<Orders> ordersList = orderRepository.findAllByCreatedAtGreaterThanAndCreatedAtLessThanAndStatus(new Timestamp(startDate),new Timestamp(endDate),OrderStatus.CUSTOMER_RETURNS.getCode());
         List<OrderResponse> orderResponseList = new ArrayList<>();
         Long turnOver = 0L;
         for (Orders orders : ordersList) {
